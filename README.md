@@ -14,15 +14,15 @@
 ## Installation
 
 ```sh
-npm tst
-```
-```sh
 npm i
 ```
 
 
 ## Tests
 
+```sh
+npm tst
+```
 ```sh
 npm run lint
 ```
