@@ -1,1 +1,190 @@
-/* add global styles that can be loaded post LCP here */
+/* these icons shouldn't affect layout shift even if they appear later.
+If I am wrong, will need to move to styles.css */
+/* stylelint-disable */
+/* TODO: maybe? download the icons as individual SVGS? */
+
+@font-face {
+  font-display: swap;
+  font-family: theme-icons;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/theme-icons.woff") format("woff"), url("https://www.freseniusmedicalcare.com/typo3conf/ext/fmc_config/Resources/Public/build/images/theme-icons.79c632d2.svg#theme-icons") format("svg")
+}
+
+/* icons ripped from the site */
+[class*=" icon-"], [class^=icon-] {
+  speak: never;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: theme-icons;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: none
+}
+
+.icon-instagram:before {
+  content: "\e92f"
+}
+
+.icon-calendar:before {
+  content: "\e900"
+}
+
+.icon-check:before {
+  content: "\e902"
+}
+
+.icon-close:before {
+  content: "\e903"
+}
+
+.icon-email:before {
+  content: "\e905"
+}
+
+.icon-list:before {
+  content: "\e90b"
+}
+
+.icon-menu:before {
+  content: "\e90c"
+}
+
+.icon-minus-circle:before {
+  content: "\e90d"
+}
+
+.icon-phone:before {
+  content: "\e911"
+}
+
+.icon-play:before {
+  content: "\e913"
+}
+
+.icon-plus-circle:before {
+  content: "\e914"
+}
+
+.icon-plus:before {
+  content: "\e915"
+}
+
+.icon-print:before {
+  content: "\e916"
+}
+
+.icon-rss:before {
+  content: "\e918"
+}
+
+.icon-search:before {
+  content: "\e919"
+}
+
+.icon-tile:before {
+  content: "\e91c"
+}
+
+.icon-video:before {
+  content: "\e91d"
+}
+
+.icon-zoom:before {
+  content: "\e91f"
+}
+
+.icon-youtube:before {
+  content: "\e920"
+}
+
+.icon-twitter:before {
+  content: "\e922"
+}
+
+.icon-linkedin:before {
+  content: "\e923"
+}
+
+.icon-facebook:before {
+  content: "\e924"
+}
+
+.icon-quotes-close:before {
+  content: "\e925"
+}
+
+.icon-quotes-open:before {
+  content: "\e926"
+}
+
+.icon-chevron-down:before {
+  content: "\e927"
+}
+
+.icon-chevron-right:before {
+  content: "\e929"
+}
+
+.icon-pointer-left:before {
+  content: "\e92c"
+}
+
+.icon-pointer-right:before {
+  content: "\e92d"
+}
+
+.icon-pointer-up:before {
+  content: "\e92e"
+}
+
+.icon-star:before {
+  content: "\e932"
+}
+
+.icon-star-outline:before {
+  content: "\e931"
+}
+
+.icon-bookmark:before {
+  content: "\e930"
+}
+
+/* end icons */
+
+/* icon placements styles that I ripped from the site */
+
+h1 > a::after,
+h2 > a::after,
+h3 > a::after,
+h4 > a::after {
+  content: "\e929";
+  display: inline-block;
+  font-family: theme-icons;
+  font-size: .8em;
+  line-height: 1;
+  margin-left: .25rem
+}
+
+.external:before,
+.file:before,
+.mail:before,
+.download:before,
+.excel:before,
+.pdf:before,
+.print:before,
+.zip:before {
+  display: inline-block;
+  font-family: theme-icons;
+  left: 0;
+  line-height: 1;
+  position: absolute;
+  text-decoration-line: none;
+  top: 0.125rem;
+}
+
+.external:before {
+  content: "\e907";
+}
