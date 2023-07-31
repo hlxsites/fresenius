@@ -5,4 +5,9 @@ node_modules/*
 
 helix-importer-ui
 .DS_Store
+*/.DS_Store
+*/*/.DS_Store
 *.bak
+.idea/*
+.vscode/*
+package-lock.json
