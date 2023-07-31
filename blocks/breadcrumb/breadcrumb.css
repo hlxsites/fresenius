@@ -1,0 +1,23 @@
+main .breadcrumb-container {
+  padding-inline: 0;
+  padding-block: 16px;
+}
+
+.breadcrumb {
+  min-height: var(--body-font-size-s);
+}
+
+.breadcrumb > nav {
+  color: var(--link-color);
+  font-size: var(--body-font-size-s);
+  padding-left: var(--default-content-gap);
+  line-height: 1;
+}
+
+.breadcrumb > nav a {
+  text-decoration: none;
+}
+
+.breadcrumb .breadcrumb-separator {
+  margin-inline: 1.5ch;
+}
