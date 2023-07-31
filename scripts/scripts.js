@@ -15,6 +15,21 @@ import {
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
+export function loadScript(url, callback, type, async) {
+  const head = document.querySelector('head');
+  const script = document.createElement('script');
+  script.src = url;
+  if (async) {
+    script.async = true;
+  }
+  if (type) {
+    script.setAttribute('type', type);
+  }
+  script.onload = callback;
+  head.append(script);
+  return script;
+}
+
 /**
  * load fonts.css and set a session storage flag
  */
