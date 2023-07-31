@@ -1,6 +1,6 @@
 import {
   sampleRUM,
-  /* buildBlock, */
+  buildBlock,
   loadHeader,
   loadFooter,
   decorateButtons,
@@ -11,9 +11,61 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  getMetadata,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
+
+/**
+ * create an element.
+ * @param {string} tagName the tag for the element
+ * @param {string|Array<string>} classes classes to apply
+ * @param {object} props properties to apply
+ * @param {string|Element} html content to add
+ * @returns the element
+ */
+export function createElement(tagName, classes, props, html) {
+  const elem = document.createElement(tagName);
+  if (classes) {
+    const classesArr = (typeof classes === 'string') ? [classes] : classes;
+    elem.classList.add(...classesArr);
+  }
+  if (props) {
+    Object.keys(props).forEach((propName) => {
+      elem.setAttribute(propName, props[propName]);
+    });
+  }
+
+  if (html) {
+    const appendEl = (el) => {
+      if (el instanceof HTMLElement || el instanceof SVGElement) {
+        elem.append(el);
+      } else {
+        elem.insertAdjacentHTML('beforeend', el);
+      }
+    };
+
+    if (Array.isArray(html)) {
+      html.forEach(appendEl);
+    } else {
+      appendEl(html);
+    }
+  }
+
+  return elem;
+}
+
+/**
+ * Builds breadcrumb block and prepends to main in a new section.
+ * @param {Element} main The container element
+ */
+function buildBreadcrumbBlock(main) {
+  if (window.location.pathname !== '/' && window.isErrorPage !== true && !getMetadata('hideBreadcrumb')) {
+    const section = createElement('div');
+    section.append(buildBlock('breadcrumb', { elems: [] }));
+    main.prepend(section);
+  }
+}
 
 export function loadScript(url, callback, type, async) {
   const head = document.querySelector('head');
@@ -48,16 +100,15 @@ async function loadFonts() {
 /** We are not using the Hero block
  but I'm keeping this code here as an example for future autoblocks
  */
-/*
+
 function buildAutoBlocks(main) {
   try {
-    buildHeroBlock(main);
+    buildBreadcrumbBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
   }
 }
-*/
 
 /**
  * Decorates the main element.
@@ -68,7 +119,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
-  /* buildAutoBlocks(main); */
+  buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
 }
