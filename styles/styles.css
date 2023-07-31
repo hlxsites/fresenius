@@ -10,36 +10,23 @@
  * governing permissions and limitations under the License.
  */
 
- :root {
-  /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
-  --background-color: #fff;
-  --overlay-background-color: #eee;
-  --highlight-background-color: #ccc;
-  --text-color: #000;
+/* we only need woff2 https://caniuse.com/?search=woff2 */
+@font-face {
+  font-display: swap;
+  font-family: "Helvetica Neue LT W05_45 Light";
+  src: url("../fonts/HN-45-light.woff2") format("woff2")
+}
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback;
-  --heading-font-family: var(--body-font-family);
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
+@font-face {
+  font-display: swap;
+  font-family: "Helvetica Neue LT W05_65 Medium";
+  src: url("../fonts/HN-65-med.woff2") format("woff2")
+}
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 18px;
-  --body-font-size-xs: 16px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px;
-  --heading-font-size-l: 32px;
-  --heading-font-size-m: 24px;
-  --heading-font-size-s: 20px;
-  --heading-font-size-xs: 18px;
-
-  /* nav height */
-  --nav-height: 64px;
-
+@font-face {
+  font-display: swap;
+  font-family: "Helvetica Neue LT W05_75 Bold";
+  src: url("../fonts/HN-75-bold.woff2") format("woff2")
 }
 
 @font-face {
@@ -49,25 +36,52 @@
   src: local('Arial');
 }
 
+:root {
+  /* colors */
+   --color-deepblue-10: rgb(7 27 69);
+   --color-deepblue-50: rgb(156 164 181); /* use for open menu link color */
+   --color-brandblue-500: rgb(0 51 160);
+   --link-color: rgb(0 51 160);
+   --link-color-hover: rgb(0 36 107);
+   --color-white: rgb(255 255 255);
+  --color-bg-deepblue-20: rgb(32 50 88); /* use for open menu subnav background */
+   --color-bg-effectiveblue-100: rgb(229 236 242);
+   --color-bg-warmgray-10: rgb(238 237 235);
+   --color-bg-medicalblue-500: rgb(25 110 128);
+   --color-bg-vividred-500: rgb(204 62 68);
+   --border-yellow: rgb(241 196 0);
 
-@media (min-width: 900px) {
-  :root {
-    --heading-font-size-xxl: 60px;
-    --heading-font-size-xl: 48px;
-    --heading-font-size-l: 36px;
-    --heading-font-size-m: 30px;
-    --heading-font-size-s: 24px;
-    --heading-font-size-xs: 22px;
-  }
+  /* fonts */
+  --body-font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+  --heading-font-family: 'Helvetica Neue LT W05_75 Bold', 'Helvetica', 'Arial', sans-serif;;
+  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
+
+  /* body sizes */
+  --body-font-size-m: 1.125rem; /* base text */
+  --body-font-size-s: 18px;
+  --body-font-size-xs: 16px;
+
+  /* heading sizes */
+  --heading-font-size-xxl: 3rem;
+  --heading-font-size-xl: 2.5rem;
+  --heading-font-size-l: 2.25rem;
+  --heading-font-size-m: 2rem;
+  --heading-font-size-s: 1.75rem;
+  --heading-font-size-xs: 1.5rem;
+  --heading-font-size-xxs: 1.25rem;
+  --heading-font-size-xxxs: 1.125rem;
+
+  /* nav height */
+  --nav-height: 140px;
 }
 
-body {
+  body {
   font-size: var(--body-font-size-m);
   margin: 0;
   font-family: var(--body-font-family);
   line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--background-color);
+  color: var(--color-deepblue-10);
+  background-color: var(--color-white);
   display: none;
 }
 
@@ -79,38 +93,65 @@ header {
   height: var(--nav-height);
 }
 
+/* heading styles base, mobile */
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
-  margin-top: 1em;
-  margin-bottom: .5em;
-  scroll-margin: calc(var(--nav-height) + 1em);
+  scroll-margin: calc(var(--nav-height) + 1rem);
+  max-width: 1056px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl) }
-h2 { font-size: var(--heading-font-size-xl) }
-h3 { font-size: var(--heading-font-size-l) }
-h4 { font-size: var(--heading-font-size-m) }
-h5 { font-size: var(--heading-font-size-s) }
-h6 { font-size: var(--heading-font-size-xs) }
+h1 {
+  font-size: var(--heading-font-size-m);
+  line-height: 2.625rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: var(--heading-font-size-s);
+  line-height: 2.25rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: var(--heading-font-size-xxs);
+  line-height: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: var(--heading-font-size-xxxs);
+  line-height: 1.625rem;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  font-size: var(--heading-font-size-s)
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs)
+}
+
+h1, h2, h3, h4, html, p {
+  color: var(--color-deepblue-10);
+}
+
+h1 > a, h2 > a, h3 > a, h4 > a {
+  color: var(--color-brandblue-500);
+}
 
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
-}
-
-hr {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  border: 0;
-  border-bottom: 1px solid var(--overlay-background-color);
+  max-width: 1056px;
 }
 
 code, pre, samp {
   font-family: var(--fixed-font-family);
   font-size: var(--body-font-size-s);
+  max-width: 1056px;
 }
 
 code, samp {
@@ -122,7 +163,6 @@ pre {
 }
 
 main pre {
-  background-color: var(--overlay-background-color);
   padding: 1em;
   border-radius: .25em;
   overflow-x: auto;
@@ -136,44 +176,97 @@ a:any-link {
 
 a:hover {
   text-decoration: underline;
-  color: var(--link-hover-color);
+  color: var(--link-color-hover);
 }
 
-/* buttons */
-a.button:any-link, button {
+/* the relevant :before styles are in lazy-styles */
+.external, .file, .mail, .download, .excel, .pdf, .print, .zip {
+  display: inline-block;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+
+/* use these classes for block variants */
+
+.bg-effectiveblue {
+  background-color: var(--color-bg-effectiveblue-100);
+}
+
+.bg-warmgray {
+  background-color: var(--color-bg-warmgray-10);
+}
+
+.bg-medicalblue {
+  background-color: var(--color-bg-medicalblue-500);
+}
+
+.bg-deepblue {
+  background-color: var(--color-deepblue-10);
+}
+
+.bg-brandblue {
+  background-color: var(--color-brandblue-500);
+}
+
+.bg-vividred {
+  background-color: var(--color-bg-vividred-500);
+}
+
+.bg-medicalblue *, .bg-deepblue *, .bg-brandblue *, .bg-vividred * {
+  color: var(--color-white);
+}
+
+/* buttons -
+"btn_secondary" aka "subpage_cta" is blue text + border, no fill on hover.
+"btn-secondary-invert" is white text + border, white fill on hover.
+we need to update the JS so not every linked P is converted to a button.
+*/
+
+a.button.primary {
+  font-weight: 700;
+}
+
+a.button.secondary {
   font-family: var(--body-font-family);
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
-  border: 2px solid transparent;
+  border: 2px solid var(--color-brandblue-500);
   padding: 5px 30px;
   text-align: center;
   font-style: normal;
   font-weight: 600;
   cursor: pointer;
-  color: var(--background-color);
-  background-color: var(--link-color);
+  color: var(--color-brandblue-500);
   margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 30px;
 }
 
-a.button:hover, a.button:focus, button:hover, button:focus  {
-  background-color: var(--link-hover-color);
+a.button.secondary:hover, a.button.secondary:focus, button:hover, button:focus  {
   cursor: pointer;
 }
 
+a:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--border-yellow);
+  outline-offset: 2px;
+}
+
 button:disabled, button:disabled:hover {
-  background-color: var(--overlay-background-color);
   cursor: unset;
 }
 
-a.button.secondary, button.secondary {
+a.button.tertiary, button.tertiary {
   background-color: unset;
   border: 2px solid currentcolor;
-  color: var(--text-color)
+  color: currentcolor;
 }
 
 main input {
@@ -185,13 +278,12 @@ main input {
   padding: 0.75rem 0.6rem;
   border-radius: 0.25rem;
   box-sizing: border-box;
-  border: 1px solid var(--text-color);
-  color: var(--text-color);
-  background-color: var(--background-color);
+  border: 1px solid var(--color-deepblue-10);
+  color: currentcolor;
 }
 
 main input:hover {
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--color-deepblue-10);
 }
 
 main blockquote {
@@ -232,20 +324,63 @@ main .section {
   padding: 64px 16px;
 }
 
-@media (min-width: 600px) {
+/* special class Frenius uses for colored blocks */
+.emotional {
+  color: var(--color-white);
+  fill: var(--color-deepblue-10);
+}
+
+/* Breakpoints are 768, 1024, 1365 */
+
+/* mobile large */
+@media (min-width: 768px) {
   main .section {
     padding: 64px 32px;
   }
 }
 
-@media (min-width: 900px) {
+/* Tablet */
+@media (min-width: 1024px) {
+  h1 {
+    font-size: var(--heading-font-size-xl);
+    margin-bottom: 3rem;
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: var(--heading-font-size-l);
+    line-height: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: var(--heading-font-size-xs);
+    line-height: 2rem;
+    margin-bottom: 1.5em;
+  }
+
+  h4 {
+    font-size: var(--heading-font-size-xxs);
+    line-height: 1.75rem;
+    margin-bottom: 1.5em;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1365px) {
+  h1 {
+    font-size: var(--heading-font-size-xxl);
+    line-height: 4rem;
+    margin-bottom: 3rem;
+  }
+
   .section > div {
-    max-width: 1200px;
+    max-width: 1680px;
     margin: auto;
   }
 }
 
 /* section metadata */
 main .section.highlight {
-  background-color: var(--highlight-background-color);
+  background-color: var(--color-bg-effectiveblue-100);
 }
