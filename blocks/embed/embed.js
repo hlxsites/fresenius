@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-duplicates
 import { toClassName } from '../../scripts/lib-franklin.js';
-import { customDecorateIcons } from '../../scripts/scripts.js';
+// eslint-disable-next-line import/no-duplicates
+import { decorateIcons } from '../../scripts/lib-franklin.js';
 
 const getDefaultEmbed = (
   url,
@@ -105,7 +107,7 @@ const loadEmbed = async (block, link, autoplay) => {
     const className = toClassName(config.match[0]);
     block.innerHTML = await config.embed(url, autoplay);
     block.classList = `block embed embed-${className}`;
-    customDecorateIcons(block);
+    decorateIcons(block);
   } else {
     block.innerHTML = getDefaultEmbed(url);
     block.classList = 'block embed';
