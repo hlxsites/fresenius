@@ -226,11 +226,7 @@ a:hover {
   color: var(--color-white);
 }
 
-/* buttons -
-"btn_secondary" aka "subpage_cta" is blue text + border, no fill on hover.
-"btn-secondary-invert" is white text + border, white fill on hover.
-we need to update the JS so not every linked P is converted to a button.
-*/
+/* buttons */
 
 a.button.primary {
   font-weight: 700;
