@@ -321,7 +321,7 @@ main img {
 }
 
 main .section {
-  padding: 64px 16px;
+  padding-bottom: 4rem;
 }
 
 /* special class Frenius uses for colored blocks */
@@ -332,15 +332,18 @@ main .section {
 
 /* Breakpoints are 768, 1024, 1365 */
 
-/* mobile large */
+/* mobile large
 @media (min-width: 768px) {
-  main .section {
-    padding: 64px 32px;
-  }
+
 }
+ */
 
 /* Tablet */
 @media (min-width: 1024px) {
+  main .section {
+    padding-bottom: 5rem;
+  }
+
   h1 {
     font-size: var(--heading-font-size-xl);
     margin-bottom: 3rem;
