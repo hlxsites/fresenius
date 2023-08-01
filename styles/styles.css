@@ -142,6 +142,11 @@ h1 > a, h2 > a, h3 > a, h4 > a {
   color: var(--color-brandblue-500);
 }
 
+h1 em, h2 em, h3 em,
+h4 em {
+  font-style: normal;
+}
+
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -217,26 +222,39 @@ a:hover {
   color: var(--color-white);
 }
 
-/* buttons -
-"btn_secondary" aka "subpage_cta" is blue text + border, no fill on hover.
-"btn-secondary-invert" is white text + border, white fill on hover.
-we need to update the JS so not every linked P is converted to a button.
-*/
+.bg-medicalblue a, .bg-deepblue a, .bg-brandblue a, .bg-vividred a {
+  color: var(--color-white);
+}
+
+/* buttons */
 
 a.button.primary {
   font-weight: 700;
+  text-decoration: none;
 }
 
-a.button.secondary {
+a.button.primary:hover, a.button.primary:focus, a.button.primary:active {
+  color: var(--color-deepblue-10);
+  cursor: pointer;
+}
+
+.bg-medicalblue a.button.primary,
+.bg-deepblue a.button.primary,
+.bg-brandblue a.button.primary,
+.bg-vividred a.button.primary {
+  color: var(--color-white);
+}
+
+a.button.secondary, a.button.tertiary {
   font-family: var(--body-font-family);
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
   border: 2px solid var(--color-brandblue-500);
-  padding: 5px 30px;
+  padding: 0.625rem 1.5rem;
   text-align: center;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   color: var(--color-brandblue-500);
   margin: 16px 0;
@@ -245,7 +263,40 @@ a.button.secondary {
   text-overflow: ellipsis;
 }
 
+a.button.secondary:hover, a.button.secondary:focus, a.button.secondary:active {
+  color: var(--color-deepblue-10);
+  border: 2px solid var(--color-deepblue-10);
+}
+
+.bg-medicalblue a.button.secondary,
+.bg-deepblue a.button.secondary,
+.bg-brandblue a.button.secondary,
+.bg-vividred a.button.secondary {
+  border: 2px solid var(--color-white);
+  color: var(--color-white);
+}
+
 a.button.secondary:hover, a.button.secondary:focus, button:hover, button:focus  {
+  cursor: pointer;
+}
+
+.bg-medicalblue a.button.secondary:hover,
+.bg-deepblue a.button.secondary:hover,
+.bg-brandblue a.button.secondary:hover,
+.bg-vividred a.button.secondary:hover {
+  border: 2px solid var(--color-white);
+  color: var(--color-brandblue-500);
+  background: var(--color-white);
+}
+
+a.button.tertiary, button.tertiary {
+  background-color: var(--color-brandblue-500);
+  border: 2px solid currentcolor;
+  color: var(--color-white);
+}
+
+a.button.tertiary:hover, a.button.tertiary:focus, a.button.tertiary:active {
+  background-color: var(--color-deepblue-10);
   cursor: pointer;
 }
 
@@ -261,12 +312,6 @@ a:focus-visible {
 
 button:disabled, button:disabled:hover {
   cursor: unset;
-}
-
-a.button.tertiary, button.tertiary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: currentcolor;
 }
 
 main input {
