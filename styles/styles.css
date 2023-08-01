@@ -332,10 +332,11 @@ main .section {
 
 /* Breakpoints are 768, 1024, 1365 */
 
-/* mobile large */
+/* mobile large
 @media (min-width: 768px) {
 
 }
+ */
 
 /* Tablet */
 @media (min-width: 1024px) {
