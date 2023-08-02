@@ -37,6 +37,11 @@
   color: #fff;
 }
 
+.who-we-are .default-content-wrapper p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .carousel-slider .slide > div p {
   font-family: "Helvetica Neue LT W05_45 Light", Helvetica, Arial, sans-serif;
   text-align: center;
@@ -117,7 +122,7 @@
 
 .who-we-are {
   position: relative;
-  background-color: rgb(238, 237, 235);
+  background-color: rgb(238 237 235);
   display: flex;
   flex-direction: row;
   max-width: 1680px;
@@ -134,11 +139,6 @@
   margin: 2rem 0 1.5rem;
   font-size: 1.75rem;
   line-height: 2.25rem;
-}
-
-.who-we-are .default-content-wrapper p {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .who-we-are .carousel-slider-wrapper {
@@ -165,6 +165,10 @@
   transition: all 0.18s ease-in;
 }
 
+.carousel-slider.stories .slide > div div {
+  padding: 0 0 0 40px;
+}
+
 .carousel-slider.stories .slide > div:hover {
   background: var(--color-bg-effectiveblue-100);
 }
@@ -173,10 +177,6 @@
   height: 213px;
   width: auto;
   object-fit: cover;
-}
-
-.carousel-slider.stories .slide > div div {
-  padding: 0 0 0 40px;
 }
 
 .carousel-slider.stories .slide > div div h3 {
