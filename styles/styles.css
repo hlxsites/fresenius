@@ -153,25 +153,20 @@ p, dl, ol, ul, pre, blockquote {
   max-width: 1056px;
 }
 
-code, pre, samp {
-  font-family: var(--fixed-font-family);
-  font-size: var(--body-font-size-s);
-  max-width: 1056px;
-}
 
-code, samp {
-  padding: .125em;
-}
-
+/* overwrite default pre styling so it can be used for unique style that can be applied via "code" style in MS Word */
 pre {
-  overflow: scroll;
+  display: block;
+  white-space-collapse: unset;
+  text-wrap: unset;
+  margin: 1em 0px;
 }
 
-main pre {
-  padding: 1em;
-  border-radius: .25em;
-  overflow-x: auto;
-  white-space: pre;
+code {
+  margin: 0 0 1.5rem;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  font-family: "Helvetica Neue LT W05_45 Light";
 }
 
 a:any-link {

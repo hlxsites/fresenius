@@ -1,0 +1,197 @@
+/* Carousel Slider block styles */
+.carousel-slider {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-slider .slide-container {
+  flex-direction: row;
+  position: relative;
+  height: inherit;
+  width: inherit;
+  overflow: hidden;
+}
+
+.carousel-slider .slide {
+  position: absolute;
+  height: inherit;
+  width: inherit;
+}
+
+.carousel-slider .slide > div {
+  height: inherit;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-slider .slide > div h3 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 4.5rem;
+  line-height: 5rem;
+  color: #fff;
+}
+
+.carousel-slider .slide > div p {
+  font-family: "Helvetica Neue LT W05_45 Light", Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  color: #fff;
+}
+
+.carousel-slider .btn-prev {
+  left: 0;
+}
+
+.carousel-slider .btn-prev::before {
+  content: "\e92c";
+}
+
+.carousel-slider .btn-next {
+  right: 0;
+}
+
+.carousel-slider .btn-next::before {
+  content: "\e92d";
+}
+
+.carousel-slider .btn-prev,
+.carousel-slider .btn-next {
+  position: absolute;
+  background: var(--link-color);
+  height: 50px;
+  width: 50px;
+  top: 50%;
+  margin-top: -25px;
+  cursor: pointer;
+  font-family: theme-icons;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+  line-height: 3rem;
+  justify-content: center;
+  transition: all 0.2s ease-in;
+}
+
+.carousel-slider .btn-prev:hover,
+.carousel-slider .btn-next:hover {
+  background: var(--link-color-hover);
+}
+
+.carousel-slider ul.dots {
+  list-style: none;
+  position: absolute;
+  padding: 0;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.carousel-slider ul.dots li {
+  display: inline-block;
+  margin: 0 0.75rem;
+}
+
+.carousel-slider ul.dots li button {
+  border: none;
+  font-size: 0;
+  height: 12px;
+  width: 12px;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 50%);
+}
+
+.carousel-slider ul.dots li.active button {
+  background: rgb(255 255 255);
+}
+
+
+.who-we-are {
+  position: relative;
+  background-color: rgb(238, 237, 235);
+  display: flex;
+  flex-direction: row;
+  max-width: 1680px;
+  margin: auto;
+  padding: 0 0 30px !important;
+}
+
+.who-we-are .default-content-wrapper {
+  flex-direction: column;
+  width: 35%;
+}
+
+.who-we-are .default-content-wrapper h2 {
+  margin: 2rem 0 1.5rem;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+
+.who-we-are .default-content-wrapper p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.who-we-are .carousel-slider-wrapper {
+  margin: -55px 0 0;
+  width: 952px;
+  height: 600px;
+  background: var(--color-deepblue-10);
+}
+
+
+.carousel-slider.stories {
+  height: 233px;
+}
+
+.carousel-slider.stories .slide {
+  width: 900px;
+  padding-right: 80px;
+}
+
+.carousel-slider.stories .slide > div {
+  display: flex;
+  flex-direction: row;
+  padding: 0 0 0 10px;
+  transition: all 0.18s ease-in;
+}
+
+.carousel-slider.stories .slide > div:hover {
+  background: var(--color-bg-effectiveblue-100);
+}
+
+.carousel-slider.stories .slide > div img {
+  height: 213px;
+  width: auto;
+  object-fit: cover;
+}
+
+.carousel-slider.stories .slide > div div {
+  padding: 0 0 0 40px;
+}
+
+.carousel-slider.stories .slide > div div h3 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  text-align: left;
+  color: var(--link-color);
+}
+
+.carousel-slider.stories .slide > div div p {
+  text-align: left;
+  font-size: 1.25em;
+  color: var(--color-deepblue-10);
+}
+
+.carousel-slider.stories ul.dots {
+  display: none;
+}
