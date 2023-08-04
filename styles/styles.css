@@ -49,6 +49,7 @@
    --color-bg-warmgray-10: rgb(238 237 235);
    --color-bg-medicalblue-500: rgb(25 110 128);
    --color-bg-vividred-500: rgb(204 62 68);
+   --color-bg-vividred-400: rgb(248 182 185);
    --border-yellow: rgb(241 196 0);
 
   /* fonts */
@@ -226,6 +227,11 @@ a:hover {
   color: var(--color-white);
 }
 
+.vividred h2, .vividred h3, .vividred h4 {
+  color: var(--color-bg-vividred-500);
+}
+
+
 /* buttons */
 
 a.button.primary {
@@ -275,6 +281,16 @@ a.button.secondary:hover, a.button.secondary:focus, a.button.secondary:active {
   border: 2px solid var(--color-white);
   color: var(--color-white);
 }
+
+.vividred a.button.secondary,
+.vividred a.button.secondary:hover,
+.vividred a.button.secondary:focus,
+.vividred a.button.secondary:active {
+  border: 2px solid var(--color-bg-vividred-500);
+  color: var(--color-bg-vividred-500);
+  background: transparent;
+}
+
 
 a.button.secondary:hover, a.button.secondary:focus, button:hover, button:focus  {
   cursor: pointer;
