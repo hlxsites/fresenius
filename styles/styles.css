@@ -44,7 +44,7 @@
    --link-color: rgb(0 51 160);
    --link-color-hover: rgb(0 36 107);
    --color-white: rgb(255 255 255);
-  --color-bg-deepblue-20: rgb(32 50 88); /* use for open menu subnav background */
+   --color-bg-deepblue-20: rgb(32 50 88); /* use for open menu subnav background */
    --color-bg-effectiveblue-100: rgb(229 236 242);
    --color-bg-warmgray-10: rgb(238 237 235);
    --color-bg-medicalblue-500: rgb(25 110 128);
@@ -53,9 +53,10 @@
 
   /* fonts */
   --body-font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
-  --heading-font-family: 'Helvetica Neue LT W05_75 Bold', 'Helvetica', 'Arial', sans-serif;;
+  --heading-font-family: 'Helvetica Neue LT W05_75 Bold', 'Helvetica', 'Arial', sans-serif;
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
-
+  --font-family-icons: 'theme-icons';
+  
   /* body sizes */
   --body-font-size-m: 1.125rem; /* base text */
   --body-font-size-s: 18px;
@@ -98,7 +99,6 @@ h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
   scroll-margin: calc(var(--nav-height) + 1rem);
-  max-width: 1056px;
 }
 
 h1 {
@@ -150,28 +150,21 @@ h4 em {
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
-  max-width: 1056px;
 }
 
-code, pre, samp {
-  font-family: var(--fixed-font-family);
-  font-size: var(--body-font-size-s);
-  max-width: 1056px;
-}
 
-code, samp {
-  padding: .125em;
-}
-
+/* overwrite default pre styling so it can be used for unique style that can be applied via "code" style in MS Word */
 pre {
-  overflow: scroll;
+  display: block;
+  text-wrap: unset;
+  margin: 1em 0;
 }
 
-main pre {
-  padding: 1em;
-  border-radius: .25em;
-  overflow-x: auto;
-  white-space: pre;
+code {
+  margin: 0 0 1.5rem;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  font-family: 'Helvetica Neue LT W05_45 Light', Helvetica, Arial, sans-serif;
 }
 
 a:any-link {
@@ -369,6 +362,10 @@ main .section {
   padding-bottom: 4rem;
 }
 
+.section .default-content-wrapper {
+  max-width: 1680px;
+}
+
 /* special class Frenius uses for colored blocks */
 .emotional {
   color: var(--color-white);
@@ -431,4 +428,11 @@ main .section {
 /* section metadata */
 main .section.highlight {
   background-color: var(--color-bg-effectiveblue-100);
+}
+
+/* mobile view */
+@media (max-width: 1440px) {
+  .section .default-content-wrapper {
+    margin: 0 20px;
+  }
 }

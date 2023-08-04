@@ -5,7 +5,7 @@ If I am wrong, will need to move to styles.css */
 
 @font-face {
   font-display: swap;
-  font-family: theme-icons;
+  font-family: theme-icons; /* note use var(--font-family-icons) as defined in style.css */
   font-style: normal;
   font-weight: 400;
   src: url("../fonts/theme-icons.woff") format("woff"), url("https://www.freseniusmedicalcare.com/typo3conf/ext/fmc_config/Resources/Public/build/images/theme-icons.79c632d2.svg#theme-icons") format("svg")
