@@ -44,7 +44,7 @@
    --link-color: rgb(0 51 160);
    --link-color-hover: rgb(0 36 107);
    --color-white: rgb(255 255 255);
-  --color-bg-deepblue-20: rgb(32 50 88); /* use for open menu subnav background */
+   --color-bg-deepblue-20: rgb(32 50 88); /* use for open menu subnav background */
    --color-bg-effectiveblue-100: rgb(229 236 242);
    --color-bg-warmgray-10: rgb(238 237 235);
    --color-bg-medicalblue-500: rgb(25 110 128);
@@ -55,7 +55,8 @@
   --body-font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
   --heading-font-family: 'Helvetica Neue LT W05_75 Bold', 'Helvetica', 'Arial', sans-serif;
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
-
+  --font-family-icons: 'theme-icons';
+  
   /* body sizes */
   --body-font-size-m: 1.125rem; /* base text */
   --body-font-size-s: 18px;
@@ -98,7 +99,6 @@ h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
   scroll-margin: calc(var(--nav-height) + 1rem);
-  max-width: 1056px;
 }
 
 h1 {
@@ -150,7 +150,6 @@ h4 em {
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
-  max-width: 1056px;
 }
 
 
@@ -363,6 +362,10 @@ main .section {
   padding-bottom: 4rem;
 }
 
+.section .default-content-wrapper {
+  max-width: 1056px;
+}
+
 /* special class Frenius uses for colored blocks */
 .emotional {
   color: var(--color-white);
@@ -425,4 +428,11 @@ main .section {
 /* section metadata */
 main .section.highlight {
   background-color: var(--color-bg-effectiveblue-100);
+}
+
+/* mobile view */
+@media (max-width: 1440px) {
+  .section .default-content-wrapper {
+    margin: 0 20px;
+  }
 }
