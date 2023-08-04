@@ -11,6 +11,7 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  decorateBlock,
   getMetadata,
 } from './lib-franklin.js';
 
@@ -95,6 +96,50 @@ async function loadFonts() {
 }
 
 /**
+ * Builds accordion blocks from default content
+ * @param {Element} main The container element
+ */
+function buildAccordions(main) {
+  const accordionSectionContainers = main.querySelectorAll('.section.accordion > .section-container');
+  accordionSectionContainers.forEach((accordion) => {
+    const contentWrappers = accordion.querySelectorAll(':scope > div');
+    const blockTable = [];
+    let row;
+    const newWrapper = createElement('div');
+    contentWrappers.forEach((wrapper) => {
+      let removeWrapper = true;
+      [...wrapper.children].forEach((child) => {
+        if (child.nodeName === 'H2') {
+          if (row) {
+            blockTable.push([{ elems: row }]);
+          }
+          row = [];
+        }
+        if (row) {
+          row.push(child);
+        } else {
+          // if there is content in the section before the first h2
+          // then that content is preserver
+          // otherwise, we remove the wrapper
+          removeWrapper = false;
+        }
+      });
+
+      if (removeWrapper) wrapper.remove();
+    });
+    // add last row
+    if (row) {
+      blockTable.push([{ elems: row }]);
+    }
+
+    const block = buildBlock('accordion', blockTable);
+    newWrapper.append(block);
+    accordion.append(newWrapper);
+    decorateBlock(block);
+  });
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
 /** We are not using the Hero block
@@ -122,6 +167,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  buildAccordions(main);
 }
 
 /**
