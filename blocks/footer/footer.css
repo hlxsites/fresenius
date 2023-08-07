@@ -302,6 +302,7 @@ footer .footer .contact select:not(:last-child) {
     flex-wrap: wrap;
     /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
     flex-direction: unset;
+    padding: 1.5em;
   }
 
   footer .footer .copyright p:first-child {
