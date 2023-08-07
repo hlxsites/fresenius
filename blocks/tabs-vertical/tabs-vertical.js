@@ -1,28 +1,31 @@
-const iconPlus = 'icon-check';
+const iconPlus = 'icon-forward-button';
 const iconMinus = 'icon-back-button';
 const classActive = 'active';
-const verticalMediaQuery = '(min-width: 1024px)';
+const desktopMQ = '(min-width: 1024px)';
+// const tabletMQ = '(min-width: 768px)';
 
-function getEmptyHeight(tabPane) {
-  const tabPaneInside = tabPane.querySelector('.tabs-vertical-pane-items');
-  const tabPaneInsideCS = window.getComputedStyle(tabPaneInside);
-  const tabBtn = tabPane.querySelector('.tabs-vertical-btn');
-  // needs to be some values that won't change
-  const emptyHeight = (parseInt(tabPaneInsideCS.paddingTop, 10) * 3) + tabBtn.offsetHeight;
-  console.log(tabPaneInsideCS.paddingTop);
-  return emptyHeight;
+function getEmptyHeight() {
+  if (window.innerWidth < 1700) {
+    const emptyHeight = (window.innerWidth / 5.2);
+    return emptyHeight;
+  } return 340;
+  // Could also try height based on padding?
+  // function getEmptyHeight(tabPanel) {
+  // Needs to be some values that won't change
+  // const tabPaneInside = tabPane.querySelector('.tabs-vertical-pane-items');
+  // const tabPaneInsideCS = window.getComputedStyle(tabPaneInside);
+  // const tabBtn = tabPane.querySelector('.tabs-vertical-btn');
+  // const emptyHeight = (parseInt(tabPaneInsideCS.paddingTop, 10) * 3) + tabBtn.offsetHeight;
+  // return emptyHeight;
 }
-
-// needed so all the slides are the same size
-// not currently using this verticalMediaQuery though
 
 function setHeights(block) {
   const tabPanes = block.querySelectorAll('.tabs-vertical-pane');
   [...tabPanes].forEach((tabPane) => {
-
-    if (window.matchMedia(verticalMediaQuery).matches) {
+    // why is this so buggy at 768?
+    if (window.matchMedia(desktopMQ).matches) {
       const emptyHeight = getEmptyHeight(tabPane);
-      if (tabPane.classList.contains('active')) {
+      if (tabPane.classList.contains(`${classActive}`)) {
         // this is the height at which bottom of pics will be cut off
         const height = `${(tabPane.querySelector('.tabs-vertical-pane-items').offsetHeight + emptyHeight)}px`;
         tabPane.style.height = height;
@@ -30,12 +33,14 @@ function setHeights(block) {
         tabPane.style.height = `${emptyHeight}px`;
       }
     } else {
+      // for all widths under 1024
       tabPane.style.removeProperty('height');
     }
   });
 }
 
-//bug -- clicking icon button removes active pang and then toggleItem can't find "closest".
+// bug -- clicking icon button removes active pane and then toggleItem can't find "closest".
+// so leaving it here and will hide with CSS for now.
 function toggleItem(item, on) {
   if (item) {
     const icon = item.querySelector('i');
@@ -50,7 +55,6 @@ function toggleItem(item, on) {
   setHeights(item.closest('.tabs-vertical.block'));
 }
 
-
 function toggleNav(block, target, i) {
   if (!(target.closest('.tabs-vertical-list') && target.closest('.active'))) {
     const actives = block.querySelectorAll(`.${classActive}`);
@@ -63,6 +67,7 @@ function toggleNav(block, target, i) {
         }
       });
     } else {
+      // this doesn't work because 'closest' doesn't find a sibling
       toggleItem(target.closest('.tabs-vertical-pane'), true);
     }
   }
@@ -114,13 +119,12 @@ export default function decorate(block) {
       const tabPaneAll = document.createElement('div');
       tabPaneAll.classList.add('tabs-vertical-pane-inside');
 
-
       const picture = row.querySelector('picture');
 
       // create a class on this row, then put it under "tabpane"
       row.classList.add('tabs-vertical-pane-items');
       // TODO: later, watch for the window resize instead
-      if (window.matchMedia(verticalMediaQuery).matches) {
+      if (window.matchMedia(desktopMQ).matches) {
         const tabP = document.createElement('p');
         tabP.appendChild(picture);
         tabPaneAll.append(tabP);
