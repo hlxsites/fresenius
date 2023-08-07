@@ -88,11 +88,12 @@ function removeAccordionForDesktop() {
 
 function checkWindowSize() {
   const isMobileScreen = window.matchMedia('(max-width: 767px)').matches;
-  if (isMobileScreen)
+  if (isMobileScreen) {
     toggleAccordionForMobile(); 
-  else
+  } else {
     removeAccordionForDesktop();
-
+  }
+  
   currentAccordion = null;
 }
 
