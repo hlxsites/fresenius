@@ -50,6 +50,7 @@
    --color-bg-medicalblue-500: rgb(25 110 128);
    --color-bg-vividred-500: rgb(204 62 68);
    --border-yellow: rgb(241 196 0);
+   --color-link: rgb(102 200 235);
 
   /* fonts */
   --body-font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
