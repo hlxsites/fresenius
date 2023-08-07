@@ -88,8 +88,10 @@ function removeAccordionForDesktop() {
 
 function checkWindowSize() {
   const isMobileScreen = window.matchMedia('(max-width: 767px)').matches;
-  if (isMobileScreen) { toggleAccordionForMobile(); }
-  else { removeAccordionForDesktop(); }
+  if (isMobileScreen)
+    toggleAccordionForMobile(); 
+  else
+    removeAccordionForDesktop();
 
   currentAccordion = null;
 }
@@ -124,7 +126,7 @@ export default async function decorate(block) {
     containerDiv.classList.add('container');
 
     // Append the first four divs to the new container div
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i += 1) {
       containerDiv.appendChild(divs[i]);
     }
 
@@ -132,7 +134,7 @@ export default async function decorate(block) {
     footer.appendChild(divs[4]);
 
     createDropdown();
-  
+
     const h4Elements = document.querySelectorAll('.contact h4');
 
     if (h4Elements.length >= 1) {
