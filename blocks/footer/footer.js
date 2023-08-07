@@ -61,7 +61,7 @@ function toggleAccordionForMobile() {
           contentDiv.appendChild(element);
         }
       });
-  
+
       header.appendChild(contentDiv);
       header.addEventListener('click', toggleAccordion);
     }
@@ -88,12 +88,8 @@ function removeAccordionForDesktop() {
 
 function checkWindowSize() {
   const isMobileScreen = window.matchMedia('(max-width: 767px)').matches;
-  if (isMobileScreen) {
-    toggleAccordionForMobile();
-  }
-  else {
-    removeAccordionForDesktop();
-  }
+  if (isMobileScreen) { toggleAccordionForMobile(); }
+  else { removeAccordionForDesktop(); }
 
   currentAccordion = null;
 }
@@ -138,12 +134,12 @@ export default async function decorate(block) {
     createDropdown();
   
     const h4Elements = document.querySelectorAll('.contact h4');
-  
+
     if (h4Elements.length >= 1) {
       const dropdown1 = createDropdown('Germany');
       h4Elements[0].insertAdjacentElement('afterend', dropdown1);
     }
-  
+
     if (h4Elements.length > 1) {
       const dropdown2 = createDropdown('EN');
       h4Elements[h4Elements.length - 1].insertAdjacentElement('afterend', dropdown2);
