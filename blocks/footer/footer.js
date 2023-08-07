@@ -45,33 +45,32 @@ function toggleAccordion(event) {
   }
 }
 
-
 function toggleAccordionForMobile() {
   const accordionHeaders = document.querySelectorAll('.news, .media-center, .quick-links');
-    for (let i = 0; i < accordionHeaders.length; i++) {
-      const header = accordionHeaders[i];
+  for (let i = 0; i < accordionHeaders.length; i += 1) {
+    const header = accordionHeaders[i];
 
-      if (!header.classList.contains('accordion-header')) {
-        header.classList.add('accordion-header');
-        const contentDiv = document.createElement('div');
-        contentDiv.classList.add('accordion-content');
+    if (!header.classList.contains('accordion-header')) {
+      header.classList.add('accordion-header');
+      const contentDiv = document.createElement('div');
+      contentDiv.classList.add('accordion-content');
+
+      const childElements = Array.from(header.children);
+      childElements.forEach((element) => {
+        if (element !== header.querySelector('h1')) {
+          contentDiv.appendChild(element);
+        }
+      });
   
-        const childElements = Array.from(header.children);
-        childElements.forEach((element) => {
-          if (element !== header.querySelector('h1')) {
-            contentDiv.appendChild(element);
-          }
-        });
-    
-        header.appendChild(contentDiv);
-        header.addEventListener('click', toggleAccordion);
-      }
+      header.appendChild(contentDiv);
+      header.addEventListener('click', toggleAccordion);
     }
+  }
 }
 
 function removeAccordionForDesktop() {
   const accordionHeaders = document.querySelectorAll('.accordion-header');
-  for (let i = 0; i < accordionHeaders.length; i++) {
+  for (let i = 0; i < accordionHeaders.length; i += 1) {
     const header = accordionHeaders[i];
     header.classList.remove('accordion-header');
 
@@ -138,10 +137,8 @@ export default async function decorate(block) {
 
     createDropdown();
   
-    // Find all the h4 elements inside the div with class "contact"
     const h4Elements = document.querySelectorAll('.contact h4');
   
-    // Create the dropdown and insert it after the first and last h4 elements
     if (h4Elements.length >= 1) {
       const dropdown1 = createDropdown('Germany');
       h4Elements[0].insertAdjacentElement('afterend', dropdown1);
