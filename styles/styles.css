@@ -58,7 +58,7 @@
   --heading-font-family: 'Helvetica Neue LT W05_75 Bold', 'Helvetica', 'Arial', sans-serif;
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
   --font-family-icons: 'theme-icons';
-  
+
   /* body sizes */
   --body-font-size-m: 1.125rem; /* base text */
   --body-font-size-s: 18px;
@@ -268,6 +268,12 @@ a.button.secondary:hover, a.button.secondary:focus, a.button.secondary:active {
   border: 2px solid var(--color-deepblue-10);
 }
 
+a.button.secondary:hover,
+a.button.secondary:focus,
+button:hover, button:focus {
+  cursor: pointer;
+}
+
 .bg-medicalblue a.button.secondary,
 .bg-deepblue a.button.secondary,
 .bg-brandblue a.button.secondary,
@@ -283,11 +289,6 @@ a.button.secondary:hover, a.button.secondary:focus, a.button.secondary:active {
   border: 2px solid var(--color-bg-vividred-500);
   color: var(--color-bg-vividred-500);
   background: transparent;
-}
-
-
-a.button.secondary:hover, a.button.secondary:focus, button:hover, button:focus  {
-  cursor: pointer;
 }
 
 .bg-medicalblue a.button.secondary:hover,
