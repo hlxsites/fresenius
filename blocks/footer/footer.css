@@ -1,5 +1,5 @@
 footer {
-  background-color: rgb(7 27 69);
+  background-color: var(--color-bg-deepblue-20);
   margin-bottom: 0;
 }
 
@@ -17,7 +17,7 @@ footer .footer .container {
 
 footer .footer > div:not(.container) {
   order: 3;
-} 
+}
 
 .accordion-header h1 {
   position: relative;
@@ -33,11 +33,14 @@ footer .footer .container > div h1 {
   color: white;
   margin-bottom: 15px;
   margin-top: 15px;
+  padding: 0;
 }
 
 footer .footer .container > div h4 {
   margin-bottom: 0;
+  font-family: "Helvetica Neue LT W05_65 Medium", Helvetica, Arial, sans-serif;
   color: var(--color-deepblue-50);
+  padding-bottom: 0.5rem;
 }
 
 footer .footer .copyright p,
@@ -53,13 +56,17 @@ footer .footer .copyright p {
 
 footer .footer .container > div h4,
 footer .footer .container > div p {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 footer .footer .container > div p {
   /* width: 200px; */
   margin-top: 0;
   color: var(--color-deepblue-50);
+  font-family: var(--heading-font-family);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 footer .footer .container > div p a {
@@ -74,7 +81,7 @@ footer .footer .container > div p em a {
 
 footer .footer .copyright {
   /* stylelint-disable-next-line color-function-notation */
-  background-color: rgb(59, 130, 246, 50%);
+  background-color: var(--link-color-hover);
   display: flex;
   flex-direction: column;
   padding-left: 1em;
@@ -88,7 +95,7 @@ footer .footer .copyright p:first-child {
 
 footer .footer .contact select {
   width: 200px;
-  height: 45px; 
+  height: 45px;
   padding: 10px;
   font-size: 1.1rem;
   margin-bottom: 20px;
@@ -180,7 +187,7 @@ footer .footer .contact select:not(:last-child) {
 
   footer .footer .contact select {
     width: 250px;
-    height: 60px; 
+    height: 60px;
     padding: 10px;
     font-size: 1.2rem;
     margin-bottom: 20px;
@@ -227,9 +234,7 @@ footer .footer .contact select:not(:last-child) {
     flex-direction: unset;
     /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
     flex-wrap: wrap;
-    padding: 2.5em;
-    padding-left: 1em;
-    padding-bottom: 1em;
+    padding: 1.5rem;
   }
 
   footer .footer .container .contact {
@@ -237,73 +242,66 @@ footer .footer .contact select:not(:last-child) {
   }
 
   footer {
-    padding: 3rem;
+    padding: 0 2rem;
     /* stylelint-disable-next-line alpha-value-notation */
     background-color: rgb(7 27 69/1);
     margin-bottom: 0;
   }
-  
+
   .footer-wrapper {
     padding-bottom: 0;
   }
-  
+
   footer .footer > div {
     display: grid;
     padding: 2rem;
     padding-top: 0;
     padding-bottom: 0;
   }
-  
+
   footer .footer > div:not(.container) {
     order: 3;
-  } 
-  
+  }
+
   footer .footer .container > div h1 {
     font-size: 1.5rem;
     color: white;
     margin-bottom: 15px;
   }
-  
+
   footer .footer .container > div h4 {
     margin-bottom: 0;
     color: var(--color-deepblue-50);
   }
-  
+
   footer .footer .copyright p,
   footer .footer .copyright p a {
     color: white;
   }
 
-  footer .footer .container > div h4,
   footer .footer .container > div p {
-    font-size: 0.9rem;
-  }
-  
-  footer .footer .container > div p {
-    width: 200px;
+    margin-right: 6rem;
     margin-top: 0;
     color: var(--color-deepblue-50);
   }
-  
+
   footer .footer .container > div p a {
     color: white;
     font-weight: bold;
   }
-  
+
   footer .footer .container > div p em a {
     color: var(--color-link);
     font-style: normal;
   }
-  
+
   footer .footer .copyright {
-    /* stylelint-disable-next-line color-function-notation */
-    background-color: rgb(59, 130, 246, 50%);
     display: flex;
     margin: 0;
     flex-wrap: wrap;
     /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
     flex-direction: unset;
-    padding: 1.5em;
+    padding: 1rem 2rem 0;
   }
 
   footer .footer .copyright p:first-child {
@@ -315,24 +313,23 @@ footer .footer .contact select:not(:last-child) {
     order: unset;
     margin-top: unset;
   }
-  
+
   footer .footer .copyright p:not(:first-child) {
     text-align: right;
     margin-right: 40px;
     font-size: 1rem;
     padding-top: 10px;
   }
-  
+
   footer .footer .contact select {
     width: 200px;
-    height: 40px; 
+    height: 40px;
     padding: 10px;
     font-size: 0.9rem;
   }
 
   footer .footer .container > div {
-    width: 23%;
+    width: 25%;
     margin-bottom: 40px;
-    padding-left: 20px;
   }
 }
