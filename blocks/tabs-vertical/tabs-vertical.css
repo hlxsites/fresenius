@@ -43,7 +43,6 @@
 .tabs-vertical-main-content p {
   line-height: 1.5;
   margin-top: 0;
-  margin-bottom: 20px;
 }
 
 .tabs-vertical .nav-tabs li a p {
@@ -256,6 +255,7 @@
 
   .vividred.tabs-vertical .nav-tabs li a p {
     background: var(--color-bg-warmgray-10);
+    padding: 0;
   }
 
   .vividred.tabs-vertical .nav-tabs li a:hover p,

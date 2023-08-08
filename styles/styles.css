@@ -106,26 +106,29 @@ h4, h5, h6 {
 h1 {
   font-size: var(--heading-font-size-m);
   line-height: 2.625rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin: 0;
+  padding-bottom: 2rem;
 }
 
 h2 {
   font-size: var(--heading-font-size-s);
   line-height: 2.25rem;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  padding-bottom: 1.5rem;
 }
 
 h3 {
   font-size: var(--heading-font-size-xxs);
   line-height: 1.75rem;
-  margin-bottom: 1rem;
+  margin: 0;
+  padding-bottom: 1rem;
 }
 
 h4 {
   font-size: var(--heading-font-size-xxxs);
   line-height: 1.625rem;
-  margin-bottom: 1rem;
+  margin: 0;
+  padding-bottom: 1rem;
 }
 
 h5 {
@@ -149,24 +152,28 @@ h4 em {
   font-style: normal;
 }
 
-p, dl, ol, ul, pre, blockquote {
+dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
+p {
+  padding-bottom: 2rem;
+  margin: 0;
+}
 
 /* overwrite default pre styling so it can be used for unique style that can be applied via "code" style in MS Word */
 pre {
   display: block;
   text-wrap: unset;
-  margin: 1em 0;
+  margin: 0;
+  padding-bottom: 1.5rem;
 }
 
 code {
-  margin: 0 0 1.5rem;
-  font-size: 1.75rem;
-  line-height: 2.5rem;
   font-family: 'Helvetica Neue LT W05_45 Light', Helvetica, Arial, sans-serif;
+  font-size: 1.375rem;
+  line-height: 2rem;
 }
 
 a:any-link {
@@ -185,7 +192,6 @@ a:hover {
   padding-left: 1.5rem;
   position: relative;
 }
-
 
 /* use these classes for block variants */
 
@@ -224,7 +230,6 @@ a:hover {
 .vividred h2, .vividred h3, .vividred h4 {
   color: var(--color-bg-vividred-500);
 }
-
 
 /* buttons */
 
@@ -376,12 +381,30 @@ main img {
   width: 100%;
 }
 
+main {
+  max-width: 1680px;
+  margin: 0 auto;
+}
 main .section {
   padding-bottom: 4rem;
 }
 
 .section .default-content-wrapper {
-  max-width: 1680px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin: 0 auto;
+}
+
+.section .default-content-wrapper p,
+.section .default-content-wrapper pre,
+.section .default-content-wrapper h1,
+.section .default-content-wrapper h2,
+.section .default-content-wrapper h3 {
+  width: 83.3%;
+}
+
+.section .default-content-wrapper p:last-child {
+  padding-bottom: 0;
 }
 
 /* special class Frenius uses for colored blocks */
@@ -392,11 +415,11 @@ main .section {
 
 /* Breakpoints are 768, 1024, 1365 */
 
-/* mobile large
 @media (min-width: 768px) {
-
+  h2 {
+    font-size: var(--heading-font-size-l);
+  }
 }
- */
 
 /* Tablet */
 @media (min-width: 1024px) {
@@ -404,42 +427,71 @@ main .section {
     padding-bottom: 5rem;
   }
 
+  .section .default-content-wrapper {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  pre {
+    padding-bottom: 2rem;
+  }
+
+  code {
+    line-height: 2.5rem;
+    font-size: 1.75rem;
+  }
+
   h1 {
     font-size: var(--heading-font-size-xl);
-    margin-bottom: 3rem;
-    margin-top: 0;
+    padding-bottom: 3rem;
   }
 
   h2 {
     font-size: var(--heading-font-size-l);
     line-height: 3rem;
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
   }
 
   h3 {
     font-size: var(--heading-font-size-xs);
     line-height: 2rem;
-    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
   }
 
   h4 {
     font-size: var(--heading-font-size-xxs);
     line-height: 1.75rem;
-    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
   }
 }
 
 /* Desktop */
 @media (min-width: 1365px) {
+  header .nav-wrapper {
+    height: 140px;
+  }
+
   h1 {
     font-size: var(--heading-font-size-xxl);
     line-height: 4rem;
-    margin-bottom: 3rem;
   }
 
   .section > div {
     max-width: 1680px;
     margin: auto;
+  }
+
+  .section .default-content-wrapper {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .section .default-content-wrapper pre,
+  .section .default-content-wrapper p,
+  .section .default-content-wrapper h1,
+  .section .default-content-wrapper h2,
+  .section .default-content-wrapper h3 {
+    width: 66.6%;
   }
 }
 
@@ -448,9 +500,3 @@ main .section.highlight {
   background-color: var(--color-bg-effectiveblue-100);
 }
 
-/* mobile view */
-@media (max-width: 1440px) {
-  .section .default-content-wrapper {
-    margin: 0 20px;
-  }
-}
