@@ -383,7 +383,7 @@ main img {
 
 main {
   max-width: 1680px;
-  margin: 0 auto;
+  margin: 2em auto 0;
 }
 
 main .section {

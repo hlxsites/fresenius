@@ -5,6 +5,7 @@ import {
   loadFooter,
   decorateButtons,
   decorateIcons,
+  wrapSpanLink,
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
@@ -54,6 +55,30 @@ export function createElement(tagName, classes, props, html) {
   }
 
   return elem;
+}
+
+/*  If an image has a soft return with link under it and a short caption.
+ */
+function figureImageLink(block) {
+  [...block.querySelectorAll('picture + br + a')]
+    .filter((a) => a.href === a.textContent)
+    .forEach((a) => {
+      const picture = a.previousElementSibling.previousElementSibling;
+      picture.remove();
+      a.previousElementSibling.remove();
+      const imageLink = a.parentElement.nextElementSibling;
+      if (imageLink.childElementCount === 1 && imageLink.firstElementChild.nodeName === 'A') {
+        const figure = document.createElement('figure');
+        figure.append(picture);
+        const caption = document.createElement('figcaption');
+        caption.innerHTML = imageLink.firstElementChild.innerHTML;
+        figure.append(caption);
+        a.innerHTML = figure.outerHTML;
+        imageLink.remove();
+      } else {
+        a.innerHTML = picture.outerHTML;
+      }
+    });
 }
 
 /**
@@ -149,6 +174,7 @@ function buildAccordions(main) {
 function buildAutoBlocks(main) {
   try {
     buildBreadcrumbBlock(main);
+    figureImageLink(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -164,6 +190,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
+  wrapSpanLink(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);

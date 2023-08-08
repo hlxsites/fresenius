@@ -222,6 +222,21 @@ export async function decorateIcons(element) {
   });
 }
 
+/* When a link is immediately following an icon, link it.
+This is in lib-franklin instead of scripts because it needs to happen
+in various blocks, including header + footer
+*/
+
+export function wrapSpanLink(element = document) {
+  element.querySelectorAll('span.icon + a')
+    .forEach((a) => {
+      if (a.href === a.innerHTML) {
+        a.innerHTML = '';
+        a.append(a.previousElementSibling);
+      }
+    });
+}
+
 /**
  * Gets placeholders object.
  * @param {string} [prefix] Location of placeholders
