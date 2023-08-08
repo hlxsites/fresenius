@@ -93,8 +93,6 @@ function checkWindowSize() {
   } else {
     removeAccordionForDesktop();
   }
-
-  currentAccordion = null;
 }
 
 export default async function decorate(block) {
@@ -148,6 +146,7 @@ export default async function decorate(block) {
       h4Elements[h4Elements.length - 1].insertAdjacentElement('afterend', dropdown2);
     }
 
+    checkWindowSize();
     window.addEventListener('load', checkWindowSize);
     window.addEventListener('resize', checkWindowSize);
   }

@@ -103,12 +103,13 @@ footer .footer .container .contact {
 .accordion-header {
   cursor: pointer;
   padding: 2px;
+  position: relative;
 }
 
 .accordion-header h1::before {
   position: absolute;
   content: '';
-  top: .25rem;
+  top: .45rem;
   right: 1rem;
   width: 10px;
   height: 10px;
