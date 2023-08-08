@@ -53,7 +53,7 @@ export default async function decorate(block) {
     currentPath.innerText = document.querySelector('title').innerText;
     breadcrumbLinks.push(currentPath.outerHTML);
 
-    breadcrumb.innerHTML = breadcrumbLinks.join('<span class="breadcrumb-separator">/</span>');
+    breadcrumb.innerHTML = breadcrumbLinks.join('<span class="breadcrumb-separator"></span>');
     block.append(breadcrumb);
   }, 1000);
 }
