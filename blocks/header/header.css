@@ -1,4 +1,7 @@
 /* header and nav layout */
+header, header .nav-wrapper {
+  height: 72px;
+}
 
 header .nav-wrapper {
   width: 100%;
@@ -237,7 +240,7 @@ header .nav-brand {
 }
 
 @media (min-width: 1024px) {
-  header nav {
+  header, header .nav-wrapper {
    height: var(--nav-height);
   }
 
