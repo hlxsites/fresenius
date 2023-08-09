@@ -1,6 +1,6 @@
 .columns {
-  margin-right: 1rem;
-  margin-left: 1rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 .columns > div {
@@ -60,6 +60,29 @@
 .columns.list div:nth-child(3),
 .columns.list div:nth-child(4) {
   display: none;
+}
+
+.columns.teaser-image-text p {
+  padding-bottom: .5rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.columns.teaser-image-text .button-container {
+  padding-bottom: 0;
+}
+
+.columns.teaser-image-text h3 {
+  line-height: 2.375rem;
+}
+
+.columns.teaser-image-text > div > div {
+  padding: 1rem;
+}
+
+.columns.teaser-image-text .columns-img-col {
+  margin-top: -1.5rem;
+  padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
