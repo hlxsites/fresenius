@@ -3,6 +3,17 @@ footer {
   margin-bottom: 0;
 }
 
+footer .icon {
+  padding-bottom: 0;
+}
+
+footer .icon::before {
+  transform: translateY(10px);
+  display: grid;
+  color: white;
+  height: 0;
+}
+
 .footer-wrapper {
   padding-bottom: 0;
 }
