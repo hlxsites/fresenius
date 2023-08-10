@@ -61,7 +61,6 @@ footer .footer .copyright p a {
 
 footer .footer .copyright p {
   margin-top: 8px;
-  margin-bottom: 10px;
   font-size: 0.95em;
 }
 
@@ -115,6 +114,10 @@ footer .footer .contact select {
 
 footer .footer .container .contact {
   order: -1;
+}
+
+footer .footer .container .contact p {
+  padding-bottom: 1rem;
 }
 
 /* Style for the accordion headers */
