@@ -18,6 +18,40 @@
   padding: 1.5rem;
 }
 
+.columns.teaser-text {
+  margin: 0;
+}
+
+.columns.list a {
+  font-size: 1.25rem;
+  line-height: 1.375;
+}
+
+.columns h3 {
+  font-size: 1.5rem;
+  line-height: 2.375rem;
+  padding-bottom: 1rem;
+}
+
+.columns.teaser-standard p,
+.columns.teaser-standard a,
+.columns.teaser-standard h3,
+.columns.teaser-standard h4 {
+  padding-bottom: 0;
+}
+
+.columns.teaser-text h2 a {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  margin-bottom: 2rem;
+}
+
+.columns.teaser-text strong {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  padding-bottom: 1rem;
+}
+
 .columns.teaser-standard > div > div {
   padding-left: 0;
   padding-right: 0;
@@ -49,24 +83,6 @@
   color: var(--color-brandblue-500);
   padding-bottom: 0.5rem;
   font-size: 1rem;
-}
-
-.columns.list a {
-  font-size: 1.25rem;
-  line-height: 1.375;
-}
-
-.columns h3 {
-  font-size: 1.5rem;
-  line-height: 2.375rem;
-  padding-bottom: 1rem;
-}
-
-.columns.teaser-standard p,
-.columns.teaser-standard a,
-.columns.teaser-standard h3,
-.columns.teaser-standard h4 {
-padding-bottom: 0;
 }
 
 .columns.teaser-standard .button-container {
@@ -154,6 +170,22 @@ padding-bottom: 0;
     padding: 1.5rem 1.5rem 1.5rem 2.5rem;
   }
 
+  .columns.highlight-text {
+    width: 83%;
+  }
+
+  .columns.highlight-text h2 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .columns.teaser-text > div {
+    align-items: flex-start;
+    flex-direction: unset;
+    gap: 32px;
+  }
+
   .columns.list > div {
     align-items: center;
     flex-direction: unset;
@@ -176,6 +208,10 @@ padding-bottom: 0;
 
   .columns.list div:nth-child(2) {
     display: block;
+  }
+
+  .columns.teaser-text > div > div:first-child {
+    max-width: 33%;
   }
 
   .columns.teaser-standard > div > div:last-child {
@@ -240,6 +276,32 @@ padding-bottom: 0;
 
   .columns.list {
     margin-left: 0.5rem;
+  }
+
+  .columns.teaser-text, .columns.highlight-text {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .columns.highlight-text {
+    max-width: 75%;
+  }
+
+  .columns.highlight-text h2 {
+    font-size: 2.25rem;
+    line-height: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  .columns.teaser-text h2 a {
+    font-size: 2.25rem;
+    line-height: 3rem;
+  }
+
+  .columns.teaser-text strong {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding-bottom: 1.5rem;
   }
 
   .columns.list > div {
@@ -338,6 +400,16 @@ padding-bottom: 0;
   .columns.list {
     margin-left: 0;
     margin-right: 6rem;
+  }
+
+  .columns.highlight-text, .columns.teaser-text {
+    margin-left: 9rem;
+    max-width: 66%;
+  }
+
+  .columns.teaser-text > div > div {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .columns.home-hero h2 {
