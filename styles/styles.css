@@ -396,8 +396,8 @@ main .section {
   margin-bottom: 4rem;
 }
 
-.section.related h3 {
-  padding-bottom: 0;
+.section.related h3, .section.related h4, .section.related p {
+  padding-bottom: .5rem;
 }
 
 .section .default-content-wrapper {
@@ -408,7 +408,7 @@ main .section {
 
 .section .default-content-wrapper p,
 .section .default-content-wrapper pre,
-.section .default-content-wrapper h1,
+.section .default-content-wrapper h4,
 .section .default-content-wrapper h2,
 .section .default-content-wrapper h3 {
   width: 83.3%;
@@ -498,7 +498,11 @@ main .section {
 
   .section .default-content-wrapper {
     padding-left: 0;
-    margin-left: 11rem;
+    margin-left: 10.5rem;
+  }
+
+  .section .default-content-wrapper h1 {
+    margin-left: -7.5rem;
   }
 
   .section.related .default-content-wrapper {
@@ -507,9 +511,9 @@ main .section {
 
   .section .default-content-wrapper pre,
   .section .default-content-wrapper p,
-  .section .default-content-wrapper h1,
   .section .default-content-wrapper h2,
-  .section .default-content-wrapper h3 {
+  .section .default-content-wrapper h3,
+  .section .default-content-wrapper h4{
     width: 70%;
   }
 }
