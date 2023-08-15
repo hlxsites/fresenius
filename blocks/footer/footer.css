@@ -104,9 +104,6 @@ footer .footer .copyright p:first-child {
 }
 
 footer .footer .contact select {
-  width: 200px;
-  height: 45px;
-  padding: 10px;
   font-size: 1.1rem;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -202,10 +199,7 @@ footer .footer .contact select:not(:last-child) {
   footer .footer .contact select {
     width: 250px;
     height: 60px;
-    padding: 10px;
     font-size: 1.2rem;
-    margin-bottom: 20px;
-    margin-top: 10px;
   }
 
   footer .footer .contact select:not(:last-child) {

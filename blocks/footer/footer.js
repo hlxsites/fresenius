@@ -1,18 +1,10 @@
 import { readBlockConfig, decorateIcons, wrapSpanLink } from '../../scripts/lib-franklin.js';
+import { createDropdown } from '../../scripts/scripts.js';
 
 /**
  * loads and decorates the footer
  * @param {Element} block The footer block element
  */
-function createDropdown(placeholder) {
-  const dropdown = document.createElement('select');
-  const option = document.createElement('option');
-  option.text = placeholder;
-  option.disabled = true;
-  option.selected = true;
-  dropdown.appendChild(option);
-  return dropdown;
-}
 
 let currentAccordion = null;
 

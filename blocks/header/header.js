@@ -1,7 +1,8 @@
 import { getMetadata, decorateIcons, wrapSpanLink } from '../../scripts/lib-franklin.js';
+import { createDropdown } from '../../scripts/scripts.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = window.matchMedia('(min-width: 1024px)');
+const isDesktop = window.matchMedia('(min-width: 68px)'); // this is a hack
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -52,34 +53,24 @@ function toggleAllNavSections(sections, expanded = false) {
  * @param {Element} navSections The nav sections within the container element
  * @param {*} forceExpanded Optional param to force nav expand behavior when not null
  */
+
+// force expanded = true means you can't close it
 function toggleMenu(nav, navSections, forceExpanded = null) {
   const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
   const button = nav.querySelector('.nav-hamburger button');
-  // document.body.style.overflowY = (expanded || isDesktop.matches) ? '' : 'hidden';
-  // nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  // toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
+
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
   button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
   // enable nav dropdown keyboard accessibility
   const navDrops = navSections.querySelectorAll('.nav-drop');
-  if (isDesktop.matches) {
-    navDrops.forEach((drop) => {
-      if (!drop.hasAttribute('tabindex')) {
-        drop.setAttribute('role', 'button');
-        drop.setAttribute('tabindex', 0);
-        drop.addEventListener('focus', focusNavSection);
-      }
-    });
-  } else {
-    navDrops.forEach((drop) => {
-      drop.removeAttribute('role');
-      drop.removeAttribute('tabindex');
-      drop.removeEventListener('focus', focusNavSection);
-    });
-  }
+  navDrops.forEach((drop) => {
+    drop.removeAttribute('role');
+    drop.removeAttribute('tabindex');
+    drop.removeEventListener('focus', focusNavSection);
+  });
   // enable menu collapse on escape keypress
-  if (!expanded || isDesktop.matches) {
+  if (!expanded) {
     // collapse menu on escape press
     window.addEventListener('keydown', closeOnEscape);
   } else {
@@ -112,26 +103,26 @@ export default async function decorate(block) {
     });
 
     const navSections = nav.querySelector('.nav-sections');
+
     if (navSections) {
-      navSections.querySelectorAll(':scope > ul > li').forEach((navSection) => {
-        if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-        navSection.addEventListener('click', () => {
-          // does not effect desktop
-          if (isDesktop.matches) {
-            const expanded = navSection.getAttribute('aria-expanded') === 'true';
+      navSections.querySelectorAll(':scope > ul > li')
+        .forEach((navSection) => {
+          if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+          const expanded = navSection.getAttribute('aria-expanded') === 'true';
+          navSection.addEventListener('click', (event) => {
             toggleAllNavSections(navSections);
             // set second one to false to prevent subnav expansion in desktop
-            navSection.setAttribute('aria-expanded', expanded ? 'false' : 'false');
-          }
+            navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            event.preventDefault();
+          });
         });
-      });
     }
 
     // hamburger for mobile
     const hamburger = document.createElement('div');
     hamburger.classList.add('nav-hamburger');
     hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-        <p>Menu</p><span class="nav-hamburger-icon"></span>
+        <p></p><span class="nav-hamburger-icon"></span>
       </button>`;
     hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
     nav.prepend(hamburger);
@@ -146,5 +137,20 @@ export default async function decorate(block) {
     navWrapper.className = 'nav-wrapper';
     navWrapper.append(nav);
     block.append(navWrapper);
+
+    // add language and country dropdowns same way Footer does
+    createDropdown();
+
+    const selectElements = document.querySelectorAll('.nav-sections > p');
+
+    if (selectElements.length > 1) {
+      const dropdown1 = createDropdown('Germany');
+      selectElements[0].insertAdjacentElement('afterend', dropdown1);
+    }
+
+    if (selectElements.length >= 1) {
+      const dropdown2 = createDropdown('EN');
+      selectElements[selectElements.length - 1].insertAdjacentElement('afterend', dropdown2);
+    }
   }
 }

@@ -6,7 +6,7 @@ header, header .nav-wrapper {
 header .nav-wrapper {
   width: 100%;
   z-index: 2;
-  position: fixed;
+  position: relative;
   background-color: var(--color-white);
   box-shadow: 0 0 0.5rem 0 rgb(0 0 0 / 10%);
   font-family: var(--body-font-family);
@@ -30,7 +30,7 @@ header nav {
   margin: auto;
   max-width: 1680px;
   height: 72px;
-  padding: 1rem;
+  padding: .5rem 1rem;
 }
 
 header nav[aria-expanded="true"] {
@@ -53,11 +53,55 @@ header nav .nav-sections ul {
   padding-top: 1rem;
 }
 
+header nav p {
+  margin: 0;
+  line-height: 0;
+  font-size: 18px;
+  padding-bottom: 0;
+}
+
+header nav .nav-sections p,
+header nav .nav-sections select {
+  display: none;
+}
+
+header nav .nav-hamburger p {
+  display: none;
+}
+
+header nav[aria-expanded="true"] .nav-sections p {
+  display: block;
+  font-size: unset;
+  color: var(--color-white);
+  padding: 2rem 1.5rem;
+}
+
+header nav[aria-expanded="true"] .nav-sections select {
+  display: block;
+  margin: 0 1.5rem;
+}
+
 header nav[aria-expanded="true"] li {
   padding: .75rem 1.5rem;
 }
 
-header nav[aria-expanded="false"] > .nav-sections > ul > li:first-child {
+header nav li.nav-drop[aria-expanded="false"] {
+  width: fit-content;
+}
+
+header nav .nav-sections > ul li a {
+  font-weight: 700;
+}
+
+header nav[aria-expanded="true"] .nav-sections > ul li a {
+  color: var(--color-deepblue-50);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  padding: 0 1rem 0 0;
+}
+
+/* hide the homepage link from desktop nav */
+header nav[aria-expanded="false"] > .nav-sections > ul > li > em a {
   display: none;
 }
 
@@ -67,17 +111,20 @@ header nav[aria-expanded="true"] li em {
   font-family: var(--heading-font-family);
 }
 
-header nav .nav-sections > ul > li[aria-expanded="true"] > ul {
+header nav .nav-sections > ul > li > ul {
   left: 50%;
   background: var(--color-bg-deepblue-20);
   color: var(--color-white);
   min-height: 100%;
+  height: 100vh;
   padding-top: 1.5rem;
   position: absolute;
-  width: 100%;
+  width: 50%;
+  max-width: 840px;
   transition-duration: .4s;
   transition-property: all;
   transition-timing-function: cubic-bezier(.22, .61, .35, 1);
+  top: 70px;
 }
 
 header nav .nav-tools svg {
@@ -95,23 +142,14 @@ header nav[aria-expanded="true"] .nav-tools svg {
   fill: var(--color-white);
 }
 
-header nav .nav-sections > ul li[aria-expanded="true"] a {
-  color: var(--color-deepblue-50);
-  font-weight: 700;
-  display: block;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  padding: 0 1rem 0 0;
-}
-
-header nav .nav-sections > ul li[aria-expanded="true"] a:active,
-header nav .nav-sections > ul li[aria-expanded="true"] a:focus,
-header nav .nav-sections > ul li[aria-expanded="true"] a:hover {
+header nav[aria-expanded="true"] .nav-sections > ul li a:active,
+header nav[aria-expanded="true"] .nav-sections > ul li a:focus,
+header nav[aria-expanded="true"] .nav-sections > ul li a:hover {
   color: var(--color-white);
   text-decoration: none;
 }
 
-header nav .nav-sections > ul > li[aria-expanded="true"] a::after {
+header nav[aria-expanded="true"] .nav-sections > ul > li a::after {
   content: "\e929";
   display: inline-block;
   /* stylelint-disable-next-line */
@@ -119,6 +157,10 @@ header nav .nav-sections > ul > li[aria-expanded="true"] a::after {
   font-size: .8em;
   line-height: 1;
   margin-left: 0.25rem;
+}
+
+header nav[aria-expanded="true"] .nav-sections > ul > li em a::after {
+  display: none;
 }
 
   /* sections */
@@ -141,13 +183,6 @@ header nav .nav-tools {
   text-align: end;
 }
 
-header nav p {
-  margin: 0;
-  line-height: 0;
-  font-size: 18px;
-  padding-bottom: 0;
-}
-
 /* hamburger */
 header nav .nav-hamburger {
   grid-area: hamburger;
@@ -155,10 +190,6 @@ header nav .nav-hamburger {
   align-items: center;
   justify-content: flex-end;
   float: right;
-}
-
-header nav .nav-hamburger p {
-  color: var(--color-white);
 }
 
 header nav .nav-hamburger button {
@@ -230,6 +261,15 @@ header nav[aria-expanded="true"] .nav-hamburger-icon::after {
   transform: rotate(-45deg);
 }
 
+header nav[aria-expanded="false"] .nav-sections > ul > li > ul {
+  display: none;
+  position: relative;
+}
+
+header nav[aria-expanded="true"] .nav-sections li[aria-expanded="false"] ul {
+  display: none;
+}
+
 /* brand */
 header .nav-brand {
   grid-area: brand;
@@ -239,19 +279,33 @@ header .nav-brand {
   line-height: 1;
 }
 
+@media (min-width: 768px) {
+  header nav .nav-hamburger p {
+    display: block;
+  }
+
+  header nav .nav-hamburger p::before {
+    color: var(--color-white);
+    content: "Menu";
+  }
+
+  header nav[aria-expanded="true"] .nav-hamburger p::before {
+    content: "Close";
+  }
+}
+
 @media (min-width: 1024px) {
   header, header .nav-wrapper {
    height: var(--nav-height);
   }
 
+  header nav {
+    padding: 1.5rem 1.5rem 0 1rem;
+  }
+
   header nav .nav-brand svg {
     width: 176px;
     height: 40px;
-  }
-
-  header nav[aria-expanded="true"] {
-    min-height: 0;
-    overflow: visible;
   }
 
   header nav .nav-hamburger {
@@ -266,44 +320,35 @@ header .nav-brand {
     align-self: end;
   }
 
-  header nav[aria-expanded="true"] .nav-sections {
-    align-self: end;
-  }
-
   header nav .nav-sections .nav-drop {
-    position: relative;
-    padding-right: 16px;
     cursor: pointer;
   }
 
-  header nav .nav-sections ul {
+  header nav[aria-expanded="false"] .nav-sections ul {
     display: flex;
-    gap: 1.5em;
+    gap: 2.25em;
     margin: 0;
     justify-content: flex-end;
   }
 
-  header nav .nav-sections > ul > li {
+  header nav[aria-expanded="false"] .nav-sections > ul > li {
     flex: 0 1 auto;
     position: relative;
     font-weight: 700;
   }
+}
 
-  header nav .nav-sections > ul > li > ul {
-    display: none;
-    position: relative;
+@media (min-width: 1365px) {
+  header nav {
+    padding: 2rem 3rem 0 1.5rem;
   }
 
-  header nav .nav-sections > ul > li[aria-expanded="true"] > ul {
-    display: block;
-    position: absolute;
-    left: -1em;
-    width: 200px;
-    margin-top: 12px;
-    padding: 1em;
-    white-space: initial;
-    background: var(--color-bg-deepblue-20);
-    color: var(--color-white);
+  header .nav-wrapper {
+    height: 140px;
+  }
+
+  header nav .nav-sections ul {
+    gap: 3.5em;
   }
 
   header nav .nav-sections > ul > li > ul::before {
@@ -316,8 +361,6 @@ header .nav-brand {
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
   }
-
-  header nav .nav-sections > ul > li > ul > li {
-    padding: 8px 0;
-  }
 }
+
+
