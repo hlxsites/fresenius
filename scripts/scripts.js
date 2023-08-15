@@ -221,6 +221,17 @@ async function loadEager(doc) {
   }
 }
 
+// May move this to lib-franklin.js for LH scoring
+export function createDropdown(placeholder) {
+  const dropdown = document.createElement('select');
+  const option = document.createElement('option');
+  option.text = placeholder;
+  option.disabled = true;
+  option.selected = true;
+  dropdown.appendChild(option);
+  return dropdown;
+}
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element

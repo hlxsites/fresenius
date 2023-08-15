@@ -176,6 +176,14 @@ code {
   line-height: 2rem;
 }
 
+select {
+  font-size: 1.2rem;
+  color: var(--color-bg-deepblue-20);
+  font-weight: 700;
+  border: 1rem solid var(--color-white);
+  width: 300px;
+}
+
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
@@ -383,7 +391,7 @@ main img {
 
 main {
   max-width: 1680px;
-  margin: 2em auto 0;
+  margin: 2rem auto;
 }
 
 main .section {
@@ -434,6 +442,10 @@ main .section {
 
 /* Tablet */
 @media (min-width: 1024px) {
+  main {
+    margin: 0 auto;
+  }
+
   main .section {
     padding-bottom: 5rem;
   }
@@ -482,10 +494,6 @@ main .section {
 
 /* Desktop */
 @media (min-width: 1365px) {
-  header .nav-wrapper {
-    height: 140px;
-  }
-
   h1 {
     font-size: var(--heading-font-size-xxl);
     line-height: 4rem;
@@ -501,8 +509,18 @@ main .section {
     margin-left: 10.5rem;
   }
 
-  .section .default-content-wrapper h1 {
+  .section .default-content-wrapper h1,
+  .section .default-content-wrapper h2 a {
     margin-left: -7.5rem;
+  }
+
+  .section.no-indent .default-content-wrapper {
+    margin-left: 3rem;
+  }
+
+  .section.no-indent .default-content-wrapper h1,
+  .section.no-indent .default-content-wrapper h2 a {
+    margin-left: 0;
   }
 
   .section.related .default-content-wrapper {

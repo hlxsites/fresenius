@@ -21,6 +21,23 @@
   padding: 1.5rem;
 }
 
+.columns.z-pattern > div > div {
+  width: 83.3%;
+}
+
+.columns.teaser-standard > div > div {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.columns.teaser-image-text > div > div {
+  padding: 1rem;
+}
+
+.columns.z-pattern > div:nth-child(even) {
+  flex-direction: column-reverse;
+}
+
 .columns.teaser-text {
   margin: 0;
 }
@@ -85,13 +102,8 @@
   padding-bottom: 1rem;
 }
 
-.columns.teaser-standard > div > div {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.columns.teaser-image-text > div > div {
-  padding: 1rem;
+.columns.teaser-image-text.image-left {
+  margin-top: 2.5rem;
 }
 
 .columns.list div:nth-child(2),
@@ -205,7 +217,7 @@
 }
 
 .columns.home-hero {
-  margin: -2.1rem 0 0;
+  margin: -2.2rem 0 0;
 }
 
 .columns.home-hero .columns-img-col {
@@ -343,6 +355,7 @@
   .columns.teaser-standard h3 {
     font-size: 1.75rem;
     line-height: 2.5rem;
+    padding-right: 1rem;
   }
 
   .columns.teaser-image-text p:first-child,
@@ -459,6 +472,10 @@
     margin-top: 2rem;
     margin-left: -6rem;
     padding-bottom: 0;
+  }
+
+  .columns.z-pattern > div:nth-child(even) {
+    flex-direction: row;
   }
 
   .columns.list div:nth-child(3),
@@ -587,6 +604,10 @@
 
   .columns.teaser-standard > div > div {
     padding-top: 0;
+  }
+
+  .columns.list > div > div {
+    padding: 1.5rem;
   }
 
   .columns.z-pattern > div > div {
