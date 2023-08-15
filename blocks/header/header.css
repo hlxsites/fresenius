@@ -304,8 +304,8 @@ header .nav-brand {
   }
 
   header nav .nav-brand svg {
-    width: 176px;
     height: 40px;
+    width: 176px;
   }
 
   header nav .nav-hamburger {
