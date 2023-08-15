@@ -378,6 +378,11 @@ main img {
   height: auto;
 }
 
+main li a:link, main p a:link {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
 .icon {
   display: inline-block;
   height: 24px;
