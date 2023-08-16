@@ -23,7 +23,6 @@ main .accordion .accordion-item > :is(h2, h3) > .accordion-trigger {
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   padding-bottom: 0;
-  /* color: var(--headline-color); */
   color: var(--color-brandblue-500);
   line-height: 2.25rem;
   background-color: var(--color-white);
