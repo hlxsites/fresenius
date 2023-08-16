@@ -80,3 +80,16 @@ main .embed .embed-placeholder-play button::before {
   top: 4px;
   left: 7px;
 }
+
+@media (min-width: 768px) {
+  main .embed {
+    max-width: 85%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1365px) {
+  main .embed {
+    margin: 0 8rem;
+  }
+}

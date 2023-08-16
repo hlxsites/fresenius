@@ -73,7 +73,7 @@ export default async function decorate(block) {
     panel.setAttribute('aria-labelledby', `accordion-${block.dataset.accordionIndex}-${i}`);
     panel.setAttribute('hidden', '');
     // auto open first panel
-    if (i === 0) toggle(row);
+   // if (i === 0) toggle(row);
 
     button.addEventListener('click', () => {
       toggle(row);

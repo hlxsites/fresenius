@@ -109,11 +109,10 @@ export default async function decorate(block) {
         .forEach((navSection) => {
           if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          navSection.addEventListener('click', (event) => {
+          navSection.addEventListener('click', () => {
             toggleAllNavSections(navSections);
             // set second one to false to prevent subnav expansion in desktop
             navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-            event.preventDefault();
           });
         });
     }

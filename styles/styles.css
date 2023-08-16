@@ -403,9 +403,13 @@ main .section {
   padding-bottom: 4rem;
 }
 
+main ul {
+  padding-left: 1.5rem;
+}
+
 .section.related {
   padding-bottom: 0;
-  padding-top: 3rem;
+  padding-top: 1.5rem;
   margin-bottom: 4rem;
 }
 
@@ -417,14 +421,6 @@ main .section {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   margin: 0 auto;
-}
-
-.section .default-content-wrapper p,
-.section .default-content-wrapper pre,
-.section .default-content-wrapper h4,
-.section .default-content-wrapper h2,
-.section .default-content-wrapper h3 {
-  width: 83.3%;
 }
 
 .section .default-content-wrapper p:last-child {
@@ -441,7 +437,26 @@ main .section {
 
 @media (min-width: 768px) {
   h2 {
-    font-size: var(--heading-font-size-l);
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .section .default-content-wrapper p,
+  .section .default-content-wrapper pre,
+  .section .default-content-wrapper h4,
+  .section .default-content-wrapper h2,
+  .section .default-content-wrapper h3 {
+    width: 83.3%;
+  }
+
+  main .section.related .columns img {
+    object-fit: cover;
+    display: block;
+    vertical-align: middle;
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    padding-bottom: 1rem;
   }
 }
 
@@ -457,6 +472,15 @@ main .section {
 
   main .section.related {
     margin-bottom: 5rem;
+  }
+
+  main .section.related .columns > div > div {
+    max-width: 40%;
+  }
+
+  main .section.related p.button-container {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .section .default-content-wrapper {
@@ -511,7 +535,7 @@ main .section {
 
   .section .default-content-wrapper {
     padding-left: 0;
-    margin-left: 10.5rem;
+    margin-left: 9.5rem;
   }
 
   .section .default-content-wrapper h1,
@@ -530,6 +554,11 @@ main .section {
 
   .section.related .default-content-wrapper {
     margin-left: 4rem;
+  }
+
+  .section.related h4 {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .section .default-content-wrapper pre,
