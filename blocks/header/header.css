@@ -6,7 +6,7 @@ header, header .nav-wrapper {
 header .nav-wrapper {
   width: 100%;
   z-index: 2;
-  position: relative;
+  position: fixed;
   background-color: var(--color-white);
   box-shadow: 0 0 0.5rem 0 rgb(0 0 0 / 10%);
   font-family: var(--body-font-family);
@@ -326,9 +326,12 @@ header .nav-brand {
 
   header nav[aria-expanded="false"] .nav-sections ul {
     display: flex;
-    gap: 2.25em;
     margin: 0;
     justify-content: flex-end;
+  }
+
+  header nav[aria-expanded="false"] .nav-sections > ul > li.nav-drop {
+    padding-left: 2.25rem;
   }
 
   header nav[aria-expanded="false"] .nav-sections > ul > li {
@@ -347,8 +350,8 @@ header .nav-brand {
     height: 140px;
   }
 
-  header nav .nav-sections ul {
-    gap: 3.5em;
+  header nav[aria-expanded="false"] .nav-sections > ul > li.nav-drop {
+    padding-left: 3.25rem;
   }
 
   header nav .nav-sections > ul > li > ul::before {
