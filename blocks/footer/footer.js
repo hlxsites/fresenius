@@ -49,7 +49,7 @@ function toggleAccordionForMobile() {
 
       const childElements = Array.from(header.children);
       childElements.forEach((element) => {
-        if (element !== header.querySelector('h1')) {
+        if (element !== header.querySelector('h3')) {
           contentDiv.appendChild(element);
         }
       });
@@ -131,11 +131,13 @@ export default async function decorate(block) {
 
     if (h4Elements.length >= 1) {
       const dropdown1 = createDropdown('Germany');
+      dropdown1.setAttribute('aria-label', 'Country');
       h4Elements[0].insertAdjacentElement('afterend', dropdown1);
     }
 
     if (h4Elements.length > 1) {
       const dropdown2 = createDropdown('EN');
+      dropdown2.setAttribute('aria-label', 'Language');
       h4Elements[h4Elements.length - 1].insertAdjacentElement('afterend', dropdown2);
     }
 

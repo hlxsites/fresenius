@@ -30,16 +30,16 @@ footer .footer > div:not(.container) {
   order: 3;
 }
 
-.accordion-header h1 {
+.accordion-header h3 {
   position: relative;
   padding-right: 25px; /* To create space for the arrow */
 }
 
-.accordion-header h1:hover {
+.accordion-header h3:hover {
   text-decoration: underline;
 }
 
-footer .footer .container > div h1 {
+footer .footer .container > div h3 {
   font-size: 1.5rem;
   color: white;
   margin-bottom: 15px;
@@ -124,7 +124,7 @@ footer .footer .container .contact p {
   position: relative;
 }
 
-.accordion-header h1::before {
+.accordion-header h3::before {
   position: absolute;
   content: '';
   top: .45rem;
@@ -137,7 +137,7 @@ footer .footer .container .contact p {
   transform: rotate(45deg);
 }
 
-.accordion-header[aria-expanded="true"] h1::before {
+.accordion-header[aria-expanded="true"] h3::before {
   top: .5rem;
   transform: rotate(-135deg);
 }
@@ -271,7 +271,7 @@ footer .footer .contact select:not(:last-child) {
     order: 3;
   }
 
-  footer .footer .container > div h1 {
+  footer .footer .container > div h3 {
     font-size: 1.5rem;
     color: white;
     margin-bottom: 15px;
@@ -327,13 +327,6 @@ footer .footer .contact select:not(:last-child) {
     margin-right: 40px;
     font-size: 1rem;
     padding-top: 10px;
-  }
-
-  footer .footer .contact select {
-    width: 200px;
-    height: 40px;
-    padding: 10px;
-    font-size: 0.9rem;
   }
 
   footer .footer .container > div {

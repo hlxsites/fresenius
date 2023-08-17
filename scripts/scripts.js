@@ -144,7 +144,7 @@ function buildAccordions(main) {
           row.push(child);
         } else {
           // if there is content in the section before the first h2
-          // then that content is preserver
+          // then that content is preserved
           // otherwise, we remove the wrapper
           removeWrapper = false;
         }
