@@ -4,6 +4,8 @@ main .breadcrumb-container {
   padding-inline: 0;
   max-width: 1680px;
   margin: 0 auto;
+  position: absolute;
+  top: var(--nav-height);
 }
 
 .breadcrumb {
@@ -21,6 +23,7 @@ main .breadcrumb-container {
 .breadcrumb > nav a {
   text-decoration: none;
   padding-block: 16px;
+  color: #136ff6; /* temporary lighter color to see if LH score goes up */
 }
 
 .breadcrumb > nav a:hover {

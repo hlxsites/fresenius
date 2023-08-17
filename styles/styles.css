@@ -76,6 +76,8 @@
 
   /* nav height */
   --nav-height: 128px;
+  --nav-height-mobile: 72px;
+  --nav-height-xl: 140px;
 }
 
   body {
@@ -463,7 +465,7 @@ main ul {
 /* Tablet */
 @media (min-width: 1024px) {
   main {
-    margin: 0 auto;
+    margin: 93px auto 0;
   }
 
   main .section {
@@ -523,6 +525,10 @@ main ul {
 
 /* Desktop */
 @media (min-width: 1365px) {
+  main {
+    margin: var(--nav-height) auto 0;
+  }
+
   h1 {
     font-size: var(--heading-font-size-xxl);
     line-height: 4rem;

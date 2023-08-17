@@ -1,6 +1,6 @@
 /* header and nav layout */
 header, header .nav-wrapper {
-  height: 72px;
+  height: var(--nav-height-mobile);
 }
 
 header .nav-wrapper {
@@ -347,7 +347,7 @@ header .nav-brand {
   }
 
   header .nav-wrapper {
-    height: 140px;
+    height: var(--nav-height-xl);
   }
 
   header nav[aria-expanded="false"] .nav-sections > ul > li.nav-drop {
