@@ -326,9 +326,20 @@
     width: 83%;
   }
 
+  .columns h3 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+
   .columns.highlight-text h2 {
     font-size: 1.75rem;
     line-height: 2.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .columns.highlight-text h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
     padding-bottom: 1.5rem;
   }
 
@@ -412,11 +423,6 @@
   .columns.teaser-image-text code {
     font-size: 1.75rem;
     line-height: 2.5rem;
-  }
-
-  .columns h3 {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
   }
 
   .columns.quote h3, .columns.quote p {

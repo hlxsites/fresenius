@@ -144,7 +144,7 @@ function buildAccordions(main) {
           row.push(child);
         } else {
           // if there is content in the section before the first h2
-          // then that content is preserver
+          // then that content is preserved
           // otherwise, we remove the wrapper
           removeWrapper = false;
         }
@@ -238,13 +238,13 @@ export function createDropdown(placeholder) {
  */
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
+  loadHeader(doc.querySelector('header')); // moving up here to help with LCP?
   await loadBlocks(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);

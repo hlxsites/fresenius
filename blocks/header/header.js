@@ -144,11 +144,13 @@ export default async function decorate(block) {
 
     if (selectElements.length > 1) {
       const dropdown1 = createDropdown('Germany');
+      dropdown1.setAttribute('aria-label', 'Country');
       selectElements[0].insertAdjacentElement('afterend', dropdown1);
     }
 
     if (selectElements.length >= 1) {
       const dropdown2 = createDropdown('EN');
+      dropdown2.setAttribute('aria-label', 'Language');
       selectElements[selectElements.length - 1].insertAdjacentElement('afterend', dropdown2);
     }
   }

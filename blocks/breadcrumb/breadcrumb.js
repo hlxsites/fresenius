@@ -42,6 +42,7 @@ export default async function decorate(block) {
   });
   block.innerHTML = '';
   const HomeLink = createLink({ path: '', name: 'Home', url: window.location.origin });
+  HomeLink.setAttribute('aria-label', 'Fresenius home page link');
   const breadcrumbLinks = [HomeLink.outerHTML];
 
   window.setTimeout(async () => {
