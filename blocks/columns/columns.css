@@ -11,6 +11,11 @@
   margin-left: 1.5rem;
 }
 
+.columns.anchors a {
+  color: var(--color-deepblue-10);
+  font-weight: 400;
+}
+
 .columns.anchors.bg-effectiveblue {
   background: none;
 }
@@ -44,6 +49,15 @@
   max-height: 354px;
 }
 
+.columns.anchors > div > div::before {
+  font-family: var(--font-family-icons);
+  content: "\e92c";
+  position: relative;
+  top: 90%;
+  transform: rotate(-90deg);
+  display: block;
+}
+
 .columns.anchors p {
   padding-bottom: 0;
   width: 325px;
@@ -62,8 +76,7 @@
 }
 
 .columns.anchors .button-container {
-  padding-bottom: 0;
-  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .columns.teaser-standard > div > div {

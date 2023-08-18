@@ -222,7 +222,8 @@ export async function decorateIcons(element) {
   });
 }
 
-/* When a link is immediately following an icon, link it.
+/* When a link is immediately following an icon or picture,
+and the link and linked text are the same link it.
 This is in lib-franklin instead of scripts because it needs to happen
 in various blocks, including header + footer
 */
