@@ -161,6 +161,10 @@
   margin: 2.5rem 1.5rem 0;
 }
 
+.columns.teaser-image-text.image-right > div{
+  flex-direction: column-reverse;
+}
+
 .columns.list div:nth-child(2),
 .columns.list div:nth-child(3),
 .columns.list div:nth-child(4) {
@@ -488,7 +492,7 @@
   }
 
   .columns.quote {
-    margin: 0 2rem 8rem 0;
+    margin: 0 2rem 2rem 8rem;
   }
 
   .columns.anchors {
@@ -700,6 +704,7 @@
 
   .columns.teaser-image-text.image-right .columns-img-col {
     transform: translate(2.5rem, -2rem);
+    max-width: 53%;
   }
 
   .columns.teaser-standard {
@@ -720,8 +725,8 @@
 
 @media (min-width: 1365px) {
   .columns.quote {
-    margin-left: 16rem;
-    max-width: 75%;
+    margin: 2rem 2rem 6rem 17rem;
+    max-width: 72%;
   }
 
   .columns.highlight-intro {
