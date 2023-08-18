@@ -226,13 +226,26 @@ export async function decorateIcons(element) {
 and the link and linked text are the same link it.
 This is in lib-franklin instead of scripts because it needs to happen
 in various blocks, including header + footer
-*/
 
 export function wrapSpanLink(element = document) {
   element.querySelectorAll('span.icon + a')
     .forEach((a) => {
       if (a.href === a.innerHTML) {
         a.innerHTML = '';
+        a.append(a.previousElementSibling);
+      }
+    });
+}
+
+*/
+
+export function wrapSpanLink(element = document) {
+  element.querySelectorAll('span.icon + a')
+    .forEach((a) => {
+      const label = a.textContent;
+      if (a.href === a.textContent || a.textContent.startsWith('https://')) {
+        a.innerHTML = '';
+        a.setAttribute('aria-label', `${label} link`);
         a.append(a.previousElementSibling);
       }
     });
