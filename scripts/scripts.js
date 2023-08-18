@@ -61,7 +61,7 @@ export function createElement(tagName, classes, props, html) {
  */
 function figureImageLink(block) {
   [...block.querySelectorAll('picture + br + a')]
-    .filter((a) => a.href === a.textContent)
+    .filter((a) => a.href === a.textContent || a.textContent.startsWith('https://'))
     .forEach((a) => {
       const picture = a.previousElementSibling.previousElementSibling;
       picture.remove();

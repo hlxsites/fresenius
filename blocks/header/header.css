@@ -131,6 +131,10 @@ header nav .nav-tools svg {
   fill: var(--color-brandblue-500);
 }
 
+header nav .nav-brand .icon {
+  width: fit-content;
+}
+
 header nav .nav-brand svg {
   width: 143px;
   height: 32px;

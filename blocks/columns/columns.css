@@ -11,6 +11,11 @@
   margin-left: 1.5rem;
 }
 
+.columns.anchors a {
+  color: var(--color-deepblue-10);
+  font-weight: 400;
+}
+
 .columns.anchors.bg-effectiveblue {
   background: none;
 }
@@ -44,6 +49,15 @@
   max-height: 354px;
 }
 
+.columns.anchors > div > div::before {
+  font-family: var(--font-family-icons);
+  content: "\e92c";
+  position: relative;
+  top: 90%;
+  transform: rotate(-90deg);
+  display: block;
+}
+
 .columns.anchors p {
   padding-bottom: 0;
   width: 325px;
@@ -62,8 +76,7 @@
 }
 
 .columns.anchors .button-container {
-  padding-bottom: 0;
-  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .columns.teaser-standard > div > div {
@@ -146,6 +159,10 @@
 .columns.teaser-image-text,
 .columns.quote{
   margin: 2.5rem 1.5rem 0;
+}
+
+.columns.teaser-image-text.image-right > div{
+  flex-direction: column-reverse;
 }
 
 .columns.list div:nth-child(2),
@@ -475,7 +492,7 @@
   }
 
   .columns.quote {
-    margin: 0 2rem 8rem 0;
+    margin: 0 2rem 2rem 8rem;
   }
 
   .columns.anchors {
@@ -687,6 +704,7 @@
 
   .columns.teaser-image-text.image-right .columns-img-col {
     transform: translate(2.5rem, -2rem);
+    max-width: 53%;
   }
 
   .columns.teaser-standard {
@@ -707,8 +725,8 @@
 
 @media (min-width: 1365px) {
   .columns.quote {
-    margin-left: 16rem;
-    max-width: 75%;
+    margin: 2rem 2rem 6rem 17rem;
+    max-width: 72%;
   }
 
   .columns.highlight-intro {

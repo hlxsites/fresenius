@@ -23,7 +23,9 @@ main .breadcrumb-container {
 .breadcrumb > nav a {
   text-decoration: none;
   padding-block: 16px;
-  color: #136ff6; /* temporary lighter color to see if LH score goes up */
+
+ /* color: #136ff6; temporary lighter color to see if LH score goes up */
+  color: var(--color-brandblue-500);
 }
 
 .breadcrumb > nav a:hover {
