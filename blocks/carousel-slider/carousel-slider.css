@@ -167,9 +167,15 @@
   height: 233px;
 }
 
+.carousel-slider.stories a:hover {
+  text-decoration: none;
+}
+
+
 .carousel-slider.stories .slide {
   width: 800px;
   padding-right: 80px;
+  cursor: pointer;
 }
 
 .carousel-slider.stories .slide > div {
