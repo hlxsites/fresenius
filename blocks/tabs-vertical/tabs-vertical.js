@@ -6,7 +6,7 @@ let curSlide = 0;
 let maxSlide = 0;
 let autoScroll;
 let scrollInterval;
-let scrollDuration = '2000'; // default scroll duration
+let scrollDuration = '2000'; // default if unset in document
 // const tabletMQ = '(min-width: 768px)';
 
 function getEmptyHeight() {
