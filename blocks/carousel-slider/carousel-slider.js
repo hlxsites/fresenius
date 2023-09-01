@@ -258,7 +258,7 @@ export default function decorate(block) {
 
   if (autoScrollClass) {
     autoScroll = true;
-    // set scroll duration
+    // get scroll duration
     // eslint-disable-next-line prefer-destructuring
     scrollDuration = autoScrollClass.match(/\d+/)[0];
   }
