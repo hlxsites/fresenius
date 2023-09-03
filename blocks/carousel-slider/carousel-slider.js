@@ -36,6 +36,10 @@ const SLIDE_CONTROL_ID_PREFIX = 'carousel-slide-control';
 
 let curSlide = 0;
 let maxSlide = 0;
+let autoScroll;
+let scrollInterval;
+let scrollDuration = '1000';
+
 /**
  * Keep active dot in sync with current slide
  * @param carousel The carousel
@@ -77,6 +81,25 @@ function scrollToSlide(carousel, slideIndex = 0) {
     }
   });
   curSlide = slideIndex;
+}
+
+/**
+ * start auto scroll
+ */
+function startAutoScroll(block) {
+  if (!scrollInterval) {
+    scrollInterval = setInterval(() => {
+      scrollToSlide(block, curSlide < maxSlide ? curSlide + 1 : 0);
+    }, scrollDuration);
+  }
+}
+
+/**
+ * stop auto scroll
+ */
+function stopAutoScroll() {
+  clearInterval(scrollInterval);
+  scrollInterval = undefined;
 }
 
 /**
@@ -194,6 +217,7 @@ function buildSlide(slide, index) {
  */
 export default function decorate(block) {
   const carousel = document.createElement('div');
+
   carousel.classList.add('slide-container');
   // if block contains class story, then we need to add a div to format the content
   if (block.classList.contains('stories')) {
@@ -206,6 +230,8 @@ export default function decorate(block) {
       const h3 = info.querySelector('h3');
       // // get p
       const p = info.querySelector(':scope > p:nth-child(3)');
+      // get a (if it exist)
+      const a = info.querySelector('a');
       // create new elements
       const containerDiv = document.createElement('div');
       const newDiv = document.createElement('div');
@@ -216,7 +242,25 @@ export default function decorate(block) {
       newDiv.appendChild(p);
       // replace the existing info with the newly formatted info
       info.parentNode.replaceChild(containerDiv, info);
+
+      // if anchor exists, add click event to container div
+      if (a) {
+        containerDiv.addEventListener('click', () => {
+          window.location.href = a.getAttribute('href');
+        });
+      }
     });
+  }
+
+  // if block contains class auto-scroll add scroll functionality and get interval
+  const blockClasses = block.className.split(' ');
+  const autoScrollClass = blockClasses.find((className) => className.startsWith('auto-scroll-'));
+
+  if (autoScrollClass) {
+    autoScroll = true;
+    // get scroll duration
+    // eslint-disable-next-line prefer-destructuring
+    scrollDuration = autoScrollClass.match(/\d+/)[0];
   }
 
   // make carousel draggable
@@ -224,6 +268,18 @@ export default function decorate(block) {
   let startX = 0;
   let startScroll = 0;
   let prevScroll = 0;
+
+  carousel.addEventListener('mouseenter', () => {
+    if (autoScroll) stopAutoScroll();
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    if (isDown) {
+      snapScroll(carousel, carousel.scrollLeft > startScroll ? 1 : -1);
+    }
+    if (autoScroll) startAutoScroll(block);
+    isDown = false;
+  });
 
   carousel.addEventListener('mousedown', (e) => {
     isDown = true;
@@ -266,5 +322,36 @@ export default function decorate(block) {
     const dots = buildDots(slides);
     block.append(prevBtn, nextBtn, dots);
     syncActiveDot(block, 0);
+  }
+
+  // autoscroll functionality
+  if (autoScroll) {
+    // auto scroll when visible
+    const intersectionOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+
+    const handleAutoScroll = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startAutoScroll(block);
+        } else {
+          stopAutoScroll();
+        }
+      });
+    };
+
+    const carouselObserver = new IntersectionObserver(handleAutoScroll, intersectionOptions);
+    carouselObserver.observe(block);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoScroll();
+      } else {
+        startAutoScroll(block);
+      }
+    });
   }
 }

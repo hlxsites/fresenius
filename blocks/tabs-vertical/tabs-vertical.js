@@ -2,6 +2,11 @@ const iconPlus = 'icon-forward-button';
 const iconMinus = 'icon-back-button';
 const classActive = 'active';
 const desktopMQ = '(min-width: 1024px)';
+let curSlide = 0;
+let maxSlide = 0;
+let autoScroll;
+let scrollInterval;
+let scrollDuration = '2000'; // default
 // const tabletMQ = '(min-width: 768px)';
 
 function getEmptyHeight() {
@@ -55,22 +60,37 @@ function toggleItem(item, on) {
   setHeights(item.closest('.tabs-vertical.block'));
 }
 
-function toggleNav(block, target, i) {
-  if (!(target.closest('.tabs-vertical-list') && target.closest('.active'))) {
-    const actives = block.querySelectorAll(`.${classActive}`);
-    if (actives.length) {
-      [...actives].forEach((active) => {
-        const newActive = active.parentElement.children[i];
-        toggleItem(active, false);
-        if (active !== newActive) {
-          toggleItem(newActive, true);
-        }
-      });
-    } else {
-      // this doesn't work because 'closest' doesn't find a sibling
-      toggleItem(target.closest('.tabs-vertical-pane'), true);
-    }
+function toggleNav(block, tabIndex = 0) {
+  const actives = block.querySelectorAll(`.${classActive}`);
+  if (actives.length) {
+    [...actives].forEach((active) => {
+      const newActive = active.parentElement.children[tabIndex];
+      toggleItem(active, false);
+      if (active !== newActive) {
+        toggleItem(newActive, true);
+      }
+    });
+    curSlide = tabIndex;
   }
+}
+
+/**
+ * start auto scroll
+ */
+function startAutoScroll(block) {
+  if (!scrollInterval) {
+    scrollInterval = setInterval(() => {
+      toggleNav(block, curSlide < maxSlide ? curSlide + 1 : 0);
+    }, scrollDuration);
+  }
+}
+
+/**
+ * stop auto scroll
+ */
+function stopAutoScroll() {
+  clearInterval(scrollInterval);
+  scrollInterval = undefined;
 }
 
 function buildNav(block) {
@@ -85,8 +105,8 @@ function buildNav(block) {
     // but we want to gather all the HTML in here
     a.innerHTML = title.innerHTML;
     a.setAttribute('aria-label', title.textContent);
-    a.addEventListener('click', (e) => {
-      toggleNav(block, e.target, i);
+    a.addEventListener('click', () => {
+      toggleNav(block, i);
     });
     li.appendChild(a);
     ul.appendChild(li);
@@ -110,7 +130,29 @@ export default function decorate(block) {
   const tabMainContent = document.createElement('div');
   tabMainContent.classList.add('tabs-vertical-main-content');
 
-  [...block.children].forEach((row, i) => {
+  // if block contains class auto-scroll add scroll functionality and get interval
+  const blockClasses = block.className.split(' ');
+  const autoScrollClass = blockClasses.find((className) => className.startsWith('auto-scroll-'));
+
+  if (autoScrollClass) {
+    autoScroll = true;
+    // get scroll duration
+    // eslint-disable-next-line prefer-destructuring
+    scrollDuration = autoScrollClass.match(/\d+/)[0];
+  }
+
+  tabList.addEventListener('mouseenter', () => {
+    if (autoScroll) stopAutoScroll();
+  });
+
+  tabList.addEventListener('mouseleave', () => {
+    if (autoScroll) startAutoScroll(block);
+  });
+
+  const tabs = [...block.children];
+  maxSlide = tabs.length - 2;
+
+  tabs.forEach((row, i) => {
     // first row is for navigation, start from second row
     if (i) {
       const tabPane = document.createElement('div');
@@ -136,8 +178,8 @@ export default function decorate(block) {
       const button = document.createElement('button');
       button.classList.add('tabs-vertical-btn');
       button.innerHTML = `<i class='icon ${iconPlus}'></i>${div.textContent}`;
-      button.addEventListener('click', (e) => {
-        toggleNav(block, e.target, i - 1);
+      button.addEventListener('click', () => {
+        toggleNav(block, i - 1);
       });
       div.remove();
       row.prepend(button);
@@ -157,4 +199,35 @@ export default function decorate(block) {
   firstI.classList.add(iconMinus);
 
   block.appendChild(tabMainContent);
+
+  // autoscroll functionality
+  if (autoScroll) {
+    // auto scroll when visible
+    const intersectionOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+
+    const handleAutoScroll = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startAutoScroll(block);
+        } else {
+          stopAutoScroll();
+        }
+      });
+    };
+
+    const carouselObserver = new IntersectionObserver(handleAutoScroll, intersectionOptions);
+    carouselObserver.observe(block);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoScroll();
+      } else {
+        startAutoScroll(block);
+      }
+    });
+  }
 }
